@@ -1,6 +1,6 @@
 #!/usr/bin/env make
 #
-# A Desinax Theme.
+# A Desinax theme.
 # See organisation on GitHub: https://github.com/desinax
 
 # ------------------------------------------------------------------------
