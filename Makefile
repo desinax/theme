@@ -42,6 +42,8 @@ CHECK_VERSION = printf "%-15s %-10s %s\n" "$(shell basename $(1))" "`$(1) --vers
 # Get current working directory, it may not exist as environment variable.
 PWD = $(shell pwd)
 
+
+
 # target: help                    - Displays help.
 .PHONY:  help
 help:
@@ -51,6 +53,19 @@ help:
 	@$(ECHO) " make [target] ..."
 	@$(ECHO) "target:"
 	@egrep "^# target:" $(THIS_MAKEFILE) | sed 's/# target: / /g'
+
+
+
+# target: tag-prepare             - Prepare to tag new version.
+.PHONY: tag-prepare
+tag-prepare:
+	@$(call HELPTEXT,$@)
+	grep "^v." REVISION.md | head -1
+	[ ! -f package.json ] || grep version package.json
+	git tag
+	git status
+	#gps && gps --tags
+	#npm publish
 
 
 
