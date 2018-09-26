@@ -11,10 +11,16 @@
  * Headings
  */
 .typographyHeadings() {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: @fontFamilyHeadings;
         margin-top: @magicNumber;
         margin-bottom: @magicNumber;
+
         img {
             margin: 0;
         }
@@ -22,8 +28,8 @@
 
     h1 {
         #hgrid .fontSize(@fontSizeH1);
-        font-weight: normal;
 
+        font-weight: normal;
         border-bottom: @borderSizeH1 solid @colorH1BorderBottom;
         margin-bottom: @magicNumber - @borderSizeH1;
 
@@ -33,8 +39,7 @@
         & ~ h3,
         & ~ h4,
         & ~ h5,
-        & ~ h6,
-         {
+        & ~ h6 {
             margin-top: @magicNumber * 2;
         }
 
@@ -46,11 +51,10 @@
 
     h2 {
         #hgrid .fontSize(@fontSizeH2);
-        font-weight: normal;
 
+        font-weight: normal;
         margin-top: @magicNumber * 2;
         margin-bottom: @magicNumber - @borderSizeH2;
-
         border-bottom: @borderSizeH2 solid @colorH2BorderBottom;
 
         & + h3 {
@@ -60,11 +64,13 @@
 
     h3 {
         #hgrid .fontSize(@fontSizeH3);
+
         font-weight: normal;
     }
 
     h4 {
         #hgrid .fontSize(@fontSizeH4);
+
         font-weight: normal;
     }
 
@@ -83,7 +89,7 @@
  * Text elements
  */
 @colorTypographyMark: #000;
-@bgColorTypographyMark:  #ffff99;
+@bgColorTypographyMark:  #ff9;
 
 @colorBlockquoteBorder: #eee;
 @sizeBlockquoteBorder: 4px;
@@ -97,7 +103,7 @@
     small,
     .small,
     .smaller {
-        font-size: @fontSizeSmall; 
+        font-size: @fontSizeSmall;
     }
 
     strong,
@@ -195,16 +201,13 @@
 
     div.code,
     pre code {
-        border-top:    @borderSizeCodeblock solid @colorCodeBlockBorder;
+        border-top: @borderSizeCodeblock solid @colorCodeBlockBorder;
         border-bottom: @borderSizeCodeblock solid @colorCodeBlockBorder;
-
-        margin-top:    @magicNumber - @borderSizeCodeblock;
+        margin-top: @magicNumber - @borderSizeCodeblock;
         margin-bottom: @magicNumber - @borderSizeCodeblock;
-
-        padding-top:    @magicNumber / 2;
+        padding-top: @magicNumber / 2;
         padding-bottom: @magicNumber / 2;
         padding-left: 0.5em;
-
         background-color: @bgColorCodeBlock;
     }
 }
@@ -217,14 +220,14 @@
 .typographyListElements() {
     //ul,ol{margin:0.6875em 1.5em 1.375em 0;padding-left:1.5em;}
 
-    ul, 
+    ul,
     ol {
-        margin-top:    @magicNumber;
+        margin-top: @magicNumber;
         margin-bottom: @magicNumber;
         padding-left: 1.5em;
 
-        p { 
-            margin-top:    @magicNumber / 2;
+        p {
+            margin-top: @magicNumber / 2;
             margin-bottom: @magicNumber / 2;
         }
 
@@ -235,16 +238,16 @@
     }
 
     ul {
-          list-style-type: disc;
+        list-style-type: disc;
     }
 
     ol {
-          list-style-type: decimal;
+        list-style-type: decimal;
     }
 
     // dl dt dd
     dl {
-        margin-top:    @magicNumber;
+        margin-top: @magicNumber;
         margin-bottom: @magicNumber;
 
         &.horizontal {
@@ -253,21 +256,21 @@
             dt {
                 clear: left;
                 float: left;
-                width: @margin
-            } 
+                width: @margin;
+            }
 
             dd {
                 margin-left: @margin + 1em;
-                display:block;
-            } 
+                display: block;
+            }
         }
     }
 
-    dt { 
+    dt {
         //font-weight: bold;
     }
 
-    dd { 
+    dd {
         margin-left: 1.5em;
     }
 }
@@ -289,15 +292,11 @@
 @colorTableRowBorderHover:  #666;
 
 .typographyTableElements() {
-    table {
-
-    }
-
-    article table, 
+    article table,
     .table,
     .table1,
     .table2 {
-        margin-top:    @magicNumber;
+        margin-top: @magicNumber;
         margin-bottom: @magicNumber;
     }
 
@@ -311,17 +310,18 @@
     // A more styled table layout
     article table,
     .table,
-    .table2 { 
+    .table2 {
         border-collapse: collapse;
 
-        caption { 
+        caption {
             #hgrid .fontSize(@fontSizeSmall);
+
             text-align: left;
             font-style: italic;
         }
 
-        thead { 
-            box-shadow:  0 1px 0 @colorTableHeaderBorder;
+        thead {
+            box-shadow: 0 1px 0 @colorTableHeaderBorder;
         }
 
         th {
@@ -336,18 +336,19 @@
         }
 
         tr {
-            box-shadow:  0 1px 0 @colorTableRowBorder;
+            box-shadow: 0 1px 0 @colorTableRowBorder;
 
             &:hover {
                 color: @colorTableRowHover;
                 background-color: @bgColorTableRowHover;
-                box-shadow:  0 1px 0 @colorTableRowBorderHover;
+                box-shadow: 0 1px 0 @colorTableRowBorderHover;
             }
         }
 
+        /*
         tfoot {
-            
         }
+        */
     }
 
     // Stripe each even row in table
@@ -375,11 +376,10 @@
         border: 0;
         height: 1px;
         background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
- 
         margin-top: 1.5 * @magicNumber - 1px;
         margin-bottom: 1.5 * @magicNumber;
 
-        &:after {
+        &::after {
             content: "§";
             position: relative;
             top: -0.7em;

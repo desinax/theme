@@ -202,7 +202,7 @@ modules-clean:
 .PHONY: styleguide-install
 styleguide-install:
 	@$(call HELPTEXT,$@)
-	rsync -av node_modules/css-styleguide/.stylelintrc.json .
+	rsync -av node_modules/@desinax/css-styleguide/.stylelintrc.json .
 
 
 

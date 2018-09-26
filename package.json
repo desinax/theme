@@ -27,15 +27,15 @@
   "dependencies": {
     "@desinax/figure": "^1.0.4",
     "@desinax/responsive-menu": "^1.1.2",
-    "@desinax/typographic-grid": "^1.0.0",
-    "@desinax/vertical-grid": "^1.0.1"
+    "@desinax/typographic-grid": "^1.0.2",
+    "@desinax/vertical-grid": "^1.0.3"
   },
   "devDependencies": {
     "@desinax/css-styleguide": "^1.0.0",
     "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react": "^7.11.1",
     "javascript-style-guide": "^0.9.10",
     "jsonlint": "^1.6.3",
-    "stylelint": "^9.2.0"
+    "stylelint": "^9.5.0"
   }
 }
