@@ -78,14 +78,18 @@ tag-prepare:
 LESSC   = node_modules/.bin/lessc
 ESLINT  = node_modules/.bin/eslint
 
-LESS_SOURCE       = style.less
-LESS_INCLUDE_PATH = less
+SOURCEDIR = src
+LESS_SOURCES := $(shell find $(SOURCEDIR) -name '*.less')
+LESS_INCLUDE_PATH = $(SOURCEDIR)
 
-DESINAX_MODULES = \
-	@desinax/figure \
-	@desinax/responsive-menu \
-	@desinax/typographic-grid \
-	@desinax/vertical-grid \
+SCSS_SOURCES := $(shell find $(SOURCEDIR) -name '*.scss')
+SCSS_INCLUDE_PATH = $(SOURCEDIR)
+
+DESINAX_MODULES = $(shell cd $(SOURCEDIR) && find @desinax -mindepth 1 -maxdepth 1 -type d)
+	# @desinax/figure
+	# @desinax/responsive-menu
+	# @desinax/typographic-grid
+	# @desinax/vertical-grid
 
 
 

@@ -36,6 +36,8 @@
     "eslint-plugin-react": "^7.11.1",
     "javascript-style-guide": "^0.9.10",
     "jsonlint": "^1.6.3",
+    "less": "^2.7",
+    "less-plugin-clean-css": "^1.5",
     "stylelint": "^9.5.0"
   }
 }
