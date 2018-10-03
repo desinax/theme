@@ -111,14 +111,14 @@ DESINAX_MODULES = $(shell cd $(SOURCE) && find @desinax -mindepth 1 -maxdepth 1 
 .PHONY: prepare
 prepare: 
 	@$(call HELPTEXT,$@)
-	[ -d $(BUILD)/less/css ] || install -d $(BUILD)/less/css
-	[ -d $(BUILD)/less/lint ] || install -d $(BUILD)/less/lint
+	@[ -d $(BUILD)/less/css ] || install -d $(BUILD)/less/css
+	@[ -d $(BUILD)/less/lint ] || install -d $(BUILD)/less/lint
 
 
 
 # target: build                   - Build the stylesheets.
 .PHONY: build
-build: prepare less less-lint
+build: prepare less
 	@$(call HELPTEXT,$@)
 
 
@@ -233,25 +233,29 @@ styleguide-update:
 # LESS.
 #
 # target: less                    - Compile the LESS stylesheet(s).
-less: prepare $(LESS_CSS) $(LESS_MIN_CSS)
+less: less-css less-min-css less-lint
 	@$(call HELPTEXT,$@)
-	rsync -av $(BUILD)/less/css htdocs/
+	@rsync -a $(BUILD)/less/css htdocs/
 
-# target: less-lint               - Lint the LESS stylesheet(s).
-less-lint: prepare $(LESS_LINT)
-	@$(call HELPTEXT,$@)
+less-css: $(LESS_CSS)
+less-min-css: $(LESS_MIN_CSS)
+less-lint: $(LESS_LINT)
+
+$(BUILD)/less/css/%.css: $(SOURCE)/%.less
+	@$(call ACTION_MESSAGE,$< -> $@)
+	$(LESSC) $< $@
+
+$(BUILD)/less/css/%.min.css: $(SOURCE)/%.less
+	@$(call ACTION_MESSAGE,$< -> $@)
+	$(LESSC) --clean-css $< $@
+
+$(BUILD)/less/lint/%.less: $(SOURCE)/%.less
+	@$(call ACTION_MESSAGE,$< -> $@)
+	@touch $@
+	$(LESSC) --lint $< $@
 
 $(LESS_SOURCES): $(LESS_MODULES)
 	touch $@
-
-$(LESS_CSS): $(LESS_SOURCES)
-	$(LESSC) $< $@
-
-$(LESS_MIN_CSS): $(LESS_SOURCES)
-	$(LESSC) --clean-css $< $@
-
-$(LESS_LINT): $(LESS_SOURCES)
-	$(LESSC) --lint $< > $@
 
 
 
@@ -266,9 +270,9 @@ $(LESS_LINT): $(LESS_SOURCES)
 #
 # CSS.
 #
-# target: lint                    - Lint the stylesheet(s).
-.PHONY: lint
-lint: less
+# target: lint-css                - Lint the CSS stylesheet(s).
+.PHONY: lint-css
+lint-css: less
 	@$(call HELPTEXT,$@)
 	$(LESSC) --include-path=$(LESS_INCLUDE_PATH) --lint $(LESS_SOURCE) > build/lint/style.less
 	- $(ESLINT) build/css/style.css > build/lint/style.css
