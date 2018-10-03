@@ -1,0 +1,586 @@
+/** --------------------------------------------------------------
+ * Make your own custom style.
+ *
+ */
+
+
+
+/** ==============================================================
+ * Base
+ */
+@bgColorHtml: #424242;
+@bgColorBody: #fff;
+@colorAccentHeader1:  #3B440D;
+@colorAccentHeader2:  #9FB129;
+@colorAccentHeader3:  #d5e283;
+
+
+.linkAccent() {
+    a {
+        display: block;
+        text-decoration: none;
+        transition: all 0.6s linear;
+    }
+
+    a:hover {
+        color: @colorAccentHeader1;
+        text-shadow: 0px 0px 1px @colorAccentHeader2;
+        text-decoration: underline;
+    }
+}
+
+
+html {
+    background-color: @bgColorHtml;
+}
+
+body {
+    background-color: @bgColorBody;
+}
+
+
+
+/** --------------------------------------------------------------
+ *  Typography
+ */
+//@import (inline) "fonts_dbwebb.css";
+//@import (inline) "fonts_dbwebb.less";
+//@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i|PT+Serif|Roboto';
+//@fontFamilyHeadings:  serif;
+//@fontWeightHeadings:  300;
+//@fontFamilyBody:      sans-serif;
+@fontFamilyLogo:        @fontFamilyTimesNewRoman;
+@fontFamilyNavbar:      @fontFamilyTimesNewRoman;
+
+
+
+/** ==============================================================
+ * Header 
+ */
+@bgColorHeader: #323232;
+@colorHeader: #ffffff;
+@bgColorHeaderBorder: #666;
+
+.outer-wrap-header {
+    //background-color: @bgColorHeader;
+    //border-top: 8px solid @bgColorHeaderBorder;
+    //border-bottom: 6px solid @bgColorHeaderBorder;
+    //color: @colorHeader;
+    height: @magicNumber * 2;
+    margin-bottom: @magicNumber / 2;
+
+    a {
+        //color: @colorHeader;
+    }
+    
+    img {
+        outline: 0;
+    }
+ }
+
+.inner-wrap-header {
+    max-width: none;
+
+    .row {
+        max-width: 100%;
+    }
+    //.clearfix();
+    //.showGrid(1600);
+}
+
+.inner-wrap-header {
+    position: relative;
+}
+
+.logo-1 {
+    position: absolute;
+}
+
+// Layout of the header columns MOVE TO EACH STYLESHEET
+.site-logo-text {
+    #vgrid .column(5);
+}
+
+.navbar2 {
+    #vgrid .column(14);
+}
+
+.profile {
+    #vgrid .column(5);
+}
+
+.search {
+    //#vgrid .column(2);
+}
+
+@media screen and (max-width: 1300px) {
+    .navbar2 {
+        #vgrid .column(17);
+    }
+
+    .profile {
+        #vgrid .column(2);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .site-logo-text {
+        #vgrid .column(6);
+    }
+
+    .navbar2 {
+        #vgrid .column(16);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .site-logo-text {
+        #vgrid .column(16);
+    }
+
+    .navbar2 {
+        display: none;
+    }
+
+    .profile {
+        #vgrid .column(8);
+    }
+}
+
+
+
+/** --------------------------------------------------------------
+ * Logo and logo text
+ *
+ */
+.site-logo-text {
+    font-family: @fontFamilyLogo; // OBSOLETE try to remove to individual
+    font-size: 42px;
+    line-height: 1;
+    //letter-spacing: 4px;
+    text-shadow: 2px -2px 2px #ccc;
+    padding-left: 8px;
+
+    a {
+        color: #333;
+        text-decoration: none;
+        transition: all 0.2s linear;
+
+        &:hover {
+            color: @colorAccentHeader1;
+            text-shadow: 2px -2px 2px @colorAccentHeader2;
+        }
+    }
+}
+
+.site-logo-text-icon {
+    img {
+        vertical-align: bottom;
+    }
+}
+
+@media screen and (min-width: 1360px) {
+      .site-logo-text-icon img {
+          display: none;
+      }
+}
+
+// MOVE TO SPECIFIC
+@media screen and (max-width: 1360px) {
+    .site-logo-text-icon img {
+        display: inline;
+    }
+
+    .logo-1 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .outer-wrap,
+    .inner-wrap-footer {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .outer-wrap-flash,
+    .outer-wrap-footer {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .outer-wrap-flash {
+        .row {
+            max-width: 100%;
+        }
+    }
+
+    .footer {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}
+
+
+
+/** ==============================================================
+ * Navbar Only for dbwebb.se?
+ *
+ */
+/*
+.rm-navbar-top {
+    text-align: center;
+
+    &.rm-navbar {
+        font-family: @fontFamilyNavbar;
+        line-height: 1;
+        font-size: 22px;
+        top: 10px;
+    }
+
+    .rm-desktop {
+
+        a {
+            color: #333;
+            padding: 0 30px;
+            text-decoration: none;
+            transition: all 0.6s linear;
+        }
+
+        li:first-child a {
+            padding-left: 0;
+        }
+
+        li:last-child a {
+            padding-right: 0;
+        }
+
+        li.selected a,
+        a:hover {
+            color: @colorAccentHeader1;
+            text-shadow: 0px 0px 1px @colorAccentHeader2;
+            text-decoration: underline;
+        }
+
+        li.selected a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        .rm-desktop {
+            a {
+                padding: 0 20px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .rm-desktop {
+            a {
+                padding: 0 10px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .rm-desktop {
+            .icon {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+.rm-navbar-max {
+    //font-size: 1em;
+
+    &.rm-navbar {
+        display: inline-block;
+    }
+
+    .rm-button {
+        position: relative;
+        top: 3px;
+        font-size: 1.5em;
+        //line-height: 0;
+    }
+
+    .rm-mobile {
+        background-color: #444;
+        text-align: left;
+
+        a {
+            color: #fff;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+    }
+}
+
+*/
+
+/** ==============================================================
+ * Linkedin badges only dbwebb?
+ */
+/*
+.LI-profile-badge {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    .LI-badge-container.vertical.light {
+        min-height: 440px;
+    }
+}
+*/
+
+.outer-wrap-after-main {
+    margin-top: -2 * @magicNumber;
+}
+
+
+
+/** ==============================================================
+ * User profile & max manu (partly only dbwebb.se?)
+ *
+ */
+/*
+.profile {
+     text-align: right;
+
+     .profile-phpbb {
+         font-size: 2em;
+         line-height: 0;
+         position: absolute;
+         top: 21px;
+         right: 60px;
+     }
+
+    .ucp,
+    .login {
+        a {
+            color: @colorAccentHeader1;
+
+            &:hover {
+                color: @colorAccentHeader2;
+            }
+        }
+
+        .icon {
+            position: relative;
+            top: -12px;
+        }
+    }
+
+    .gravatar {
+        img {
+            border-radius: 50%;
+            vertical-align: -8px;
+        }
+
+        a:hover img {
+            opacity: 0.7;
+        }
+    }
+
+    .logout {
+        display: none;
+    }
+
+    .login {
+        .text {
+            display: none;
+        }
+    }
+}
+
+
+
+/** ==============================================================
+ * Column above and below
+ *
+ */
+.inner-wrap-columns-above {
+    margin-bottom: @magicNumber;
+}
+
+
+
+/** ==============================================================
+ * Main
+ *
+ */
+.inner-wrap-main {
+    padding-bottom: @magicNumber * 2;
+}
+
+.main {
+    //min-height: @magicNumber * 20;
+}
+
+
+
+/** ==============================================================
+ * Article and Sidebar blocks
+ *
+ */
+@header1BorderColor: #666;
+@headerBorderColor: #ccc;
+
+@blockBorderColor: #ccc;
+@blockBgColor: #eee;
+@blockGradientColorStart: #fff;
+@blockGradientColorEnd: #ccc;
+
+.article {
+    h1 {
+        border-bottom: 1px solid @header1BorderColor;
+    }
+
+    h2 {
+        border-bottom: 1px solid @headerBorderColor;
+    }
+    
+    margin-bottom: @magicNumber * 3;
+ }
+
+.article,
+.sidebar,
+.columns-above,
+.columns-below {
+     .block {
+         margin-bottom: @magicNumber * 2;
+
+         h4 {
+             border-top: 1px solid @blockBorderColor;
+             //border-bottom: 1px solid @borderLight;
+             background-color: @blockBgColor;
+             #gradient .horizontal(@blockGradientColorStart, @blockGradientColorEnd);
+             .anchorAnonymous();
+             .linkAccent();
+         }
+     }
+ }
+
+.sidebar-right {
+    //padding-top: @magicNumber * 2;
+}
+
+
+
+/** ==============================================================
+ * The footer column area.
+ *
+ */
+@bgColorFooter: @bgColorHtml;
+@colorFooterWrapper: #ddd;
+@colorFooter: #aaa;
+@borderFooter: #777;
+@borderColor: #666;
+
+.outer-wrap-footer {
+    background-color: @bgColorFooter;
+    padding-top: @magicNumber;
+    padding-bottom: @magicNumber * 2;
+}
+
+.footer-column-wrapper {
+    color: @colorFooterWrapper;
+    border-bottom: 1px solid @borderColor;
+    padding-bottom: @magicNumber;
+    margin-bottom: @magicNumber * 2;
+    
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: inherit;
+    }
+}
+
+.footer-column-x {
+    padding-bottom: @magicNumber;
+    padding-right: 1em;
+}
+
+.footer-column-1,
+.footer-column-2 {
+    border-right: 1px solid @borderColor;
+}
+
+.footer-column-2,
+.footer-column-3 {
+    padding-left: 1em;
+}
+
+.site-footer {
+    color: @colorFooter;
+    text-align: center;
+    //line-height: 0.5em;
+    padding-bottom: @magicNumber;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    li {
+        display: inline-block;
+        
+        &::after {
+            content: " • ";
+        }
+
+        &:last-child::after {
+            content: none;
+        }
+    }
+
+    a {
+        color: inherit;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .footer-column-wrapper,
+    .footer-column-x {
+        padding-right: 0;
+    }
+
+    .footer-column {
+        #vgrid .column(@columns);
+    }
+
+    .footer-column-x {
+        h4 {
+            border-bottom: 1px solid #999;
+        }
+    }
+
+    .footer-column-1,
+    .footer-column-2 {
+        border-right: none;
+    }
+
+    .footer-column-2,
+    .footer-column-3 {
+        padding-left: 0;
+    }
+
+    .fa-4x {
+        font-size: 2em;
+    }
+}

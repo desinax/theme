@@ -25,10 +25,12 @@
   },
   "homepage": "https://github.com/desinax/theme#readme",
   "dependencies": {
-    "@desinax/figure": "^1.0.4",
-    "@desinax/responsive-menu": "^1.1.2",
+    "@desinax/figure": "^1.0.7",
+    "@desinax/responsive-menu": "^1.1.4",
     "@desinax/typographic-grid": "^1.0.2",
-    "@desinax/vertical-grid": "^1.0.3"
+    "@desinax/vertical-grid": "^1.0.3",
+    "@fortawesome/fontawesome-free": "^5.3.1",
+    "normalize.css": "^8.0.0"
   },
   "devDependencies": {
     "@desinax/css-styleguide": "^1.0.0",
@@ -36,8 +38,8 @@
     "eslint-plugin-react": "^7.11.1",
     "javascript-style-guide": "^0.9.10",
     "jsonlint": "^1.6.3",
-    "less": "^2.7",
-    "less-plugin-clean-css": "^1.5",
-    "stylelint": "^9.5.0"
+    "less": "^3.8.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "stylelint": "^9.6.0"
   }
 }

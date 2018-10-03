@@ -78,46 +78,55 @@ tag-prepare:
 LESSC   = node_modules/.bin/lessc
 ESLINT  = node_modules/.bin/eslint
 
-SOURCEDIR = src
-LESS_SOURCES := $(shell find $(SOURCEDIR) -name '*.less')
-LESS_INCLUDE_PATH = $(SOURCEDIR)
+BUILD = build
+HTDOCS = htdocs
+SOURCE = src
 
-SCSS_SOURCES := $(shell find $(SOURCEDIR) -name '*.scss')
-SCSS_INCLUDE_PATH = $(SOURCEDIR)
+LESS_SOURCES = $(shell find $(SOURCE) -maxdepth 1 -name '*.less')
+LESS_CSS 	 = $(LESS_SOURCES:$(SOURCE)/%.less=$(BUILD)/less/css/%.css)
+LESS_MIN_CSS = $(LESS_SOURCES:$(SOURCE)/%.less=$(BUILD)/less/css/%.min.css)
+LESS_LINT 	 = $(LESS_SOURCES:$(SOURCE)/%.less=$(BUILD)/less/lint/%.less)
+LESS_MODULES = $(shell find $(SOURCE) -mindepth 2 -name '*.less')
 
-DESINAX_MODULES = $(shell cd $(SOURCEDIR) && find @desinax -mindepth 1 -maxdepth 1 -type d)
+#SCSS_SOURCES := $(shell find $(SOURCEDIR) -name '*.scss')
+#SCSS_INCLUDE_PATH = $(SOURCEDIR)
+
+DESINAX_MODULES = $(shell cd $(SOURCE) && find @desinax -mindepth 1 -maxdepth 1 -type d)
 	# @desinax/figure
 	# @desinax/responsive-menu
 	# @desinax/typographic-grid
 	# @desinax/vertical-grid
 
 
+# all:
+# 	@echo "LESS:"
+# 	@echo $(LESS_MODULES)
+
 
 # ------------------------------------------------------------------------
 #
 # Basic rules.
 #
-# target: prepare                 - Empty and prepare the build directory.
+# target: prepare                 - Prepare the build directory.
 .PHONY: prepare
 prepare: 
 	@$(call HELPTEXT,$@)
-	rm -rf build/*
-	install -d build/css build/lint
+	[ -d $(BUILD)/less/css ] || install -d $(BUILD)/less/css
+	[ -d $(BUILD)/less/lint ] || install -d $(BUILD)/less/lint
 
 
 
 # target: build                   - Build the stylesheets.
 .PHONY: build
-build: 
+build: prepare less less-lint
 	@$(call HELPTEXT,$@)
-
 
 
 # target: clean                   - Clean from generated build files.
 .PHONY: clean
 clean: 
 	@$(call HELPTEXT,$@)
-	rm -rf build
+	rm -rf $(BUILD)
 
 
 
@@ -131,7 +140,7 @@ clean-all: clean
 
 # target: install                 - Install modules and dev environment.
 .PHONY: install
-install: npm-install modules-install
+install: npm-install
 	@$(call HELPTEXT,$@)
 
 
@@ -148,32 +157,32 @@ check:
 
 # target: update                  - Update codebase.
 .PHONY: update
-update: npm-update modules-install
+update: npm-update modules-install styleguide-update
 	@$(call HELPTEXT,$@)
 
 
 
 # target: upgrade                 - Upgrade codebase.
 .PHONY: upgrade
-upgrade: npm-upgrade modules-install styleguide-install
+upgrade: npm-upgrade modules-install styleguide-update
 	@$(call HELPTEXT,$@)
 
 
 
 # target: test                    - Execute all tests.
 .PHONY: test
-test: lint
+test: less-lint
 	@$(call HELPTEXT,$@)
 
 
 
 # ------------------------------------------------------------------------
 #
-# Desinax modules.
+# External modules install
 #
-# target: modules-install         - Install Desinax modules into less/sass/js-dir.
-.PHONY: modules-install
-modules-install:
+# target: modules-desinax-install - Install Desinax modules into less/sass/js-dir.
+.PHONY: modules-desinax-install
+modules-desinax-install:
 	@$(call HELPTEXT,$@)
 	@cd node_modules;                         \
 	for module in $(DESINAX_MODULES) ; do     \
@@ -183,18 +192,26 @@ modules-install:
 			&& continue;                      \
 		install -d ../src/$$module;           \
 		rsync -av $$module/src/ ../src/$$module/; \
+		rsync -a $$module/README.md ../src/$$module/; \
+		rsync -a $$module/REVISION.md ../src/$$module/; \
+		rsync -a $$module/LICENSE ../src/$$module/; \
 	done
 
 
 
-# target: modules-clean           - Remove Desinax modules from less/sass/js-dirs
-.PHONY: modules-clean
-modules-clean:
+# target: modules-install         - Install external modules.
+.PHONY: modules-install
+modules-install: modules-desinax-install
 	@$(call HELPTEXT,$@)
-	for module in $(DESINAX_MODULES) ; do     \
-		$(call ACTION_MESSAGE, $$module);     \
-		rm -rf src/less/$$module src/sass/$$module src/js/$$module;  \
-	done
+
+	# Normalize.css
+	npm install normalize.css
+	rsync -av --exclude package.json node_modules/normalize.css src/
+	rsync -av src/normalize.css/normalize.css src/normalize.css/normalize.less
+
+	# Font Awesome
+	npm install @fortawesome/fontawesome-free
+	rsync -av --exclude package.json node_modules/@fortawesome/fontawesome-free src/@fortawesome/
 
 
 
@@ -202,9 +219,9 @@ modules-clean:
 #
 # Validation according to CSS-styleguide.
 #
-# target: styleguide-install      - Install styleguide validation files.
-.PHONY: styleguide-install
-styleguide-install:
+# target: styleguide-update       - Update styleguide validation files.
+.PHONY: styleguide-update
+styleguide-update:
 	@$(call HELPTEXT,$@)
 	rsync -av node_modules/@desinax/css-styleguide/.stylelintrc.json .
 
@@ -216,11 +233,32 @@ styleguide-install:
 # LESS.
 #
 # target: less                    - Compile the LESS stylesheet(s).
-.PHONY: less
-less: build
+less: prepare $(LESS_CSS) $(LESS_MIN_CSS)
 	@$(call HELPTEXT,$@)
-	$(LESSC) --include-path=$(LESS_INCLUDE_PATH) $(LESS_SOURCE) build/css/style.css
-	$(LESSC) --include-path=$(LESS_INCLUDE_PATH) --clean-css $(LESS_SOURCE) build/css/style.min.css
+	rsync -av $(BUILD)/less/css htdocs/
+
+# target: less-lint               - Lint the LESS stylesheet(s).
+less-lint: prepare $(LESS_LINT)
+	@$(call HELPTEXT,$@)
+
+$(LESS_SOURCES): $(LESS_MODULES)
+	touch $@
+
+$(LESS_CSS): $(LESS_SOURCES)
+	$(LESSC) $< $@
+
+$(LESS_MIN_CSS): $(LESS_SOURCES)
+	$(LESSC) --clean-css $< $@
+
+$(LESS_LINT): $(LESS_SOURCES)
+	$(LESSC) --lint $< > $@
+
+
+
+# ------------------------------------------------------------------------
+#
+# SCSS.
+#
 
 
 
@@ -233,8 +271,15 @@ less: build
 lint: less
 	@$(call HELPTEXT,$@)
 	$(LESSC) --include-path=$(LESS_INCLUDE_PATH) --lint $(LESS_SOURCE) > build/lint/style.less
-	     - $(ESLINT) build/css/style.css > build/lint/style.css
+	- $(ESLINT) build/css/style.css > build/lint/style.css
 	ls -l build/lint/
+
+
+
+# ------------------------------------------------------------------------
+#
+# JS.
+#
 
 
 
