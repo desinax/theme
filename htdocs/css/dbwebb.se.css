@@ -5476,21 +5476,78 @@ a.rm-button.rm-clicked .rm-button-face-2 {
     display: none;
   }
 }
+.rm-max.rm-navbar {
+  top: 6px;
+}
+.rm-navbar-top {
+  text-align: center;
+}
+.rm-navbar-top.rm-navbar {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1;
+  font-size: 22px;
+  top: 10px;
+}
+.rm-navbar-top .rm-desktop a {
+  color: #333;
+  padding: 0 30px;
+  text-decoration: none;
+  transition: all 0.6s linear;
+}
+.rm-navbar-top .rm-desktop li:first-child a {
+  padding-left: 0;
+}
+.rm-navbar-top .rm-desktop li:last-child a {
+  padding-right: 0;
+}
+.rm-navbar-top .rm-desktop li.selected a,
+.rm-navbar-top .rm-desktop a:hover {
+  color: #3B440D;
+  text-shadow: 0px 0px 1px #9FB129;
+  text-decoration: underline;
+}
+.rm-navbar-top .rm-desktop li.selected a {
+  text-decoration: none;
+}
+.rm-navbar-top .rm-desktop li.selected a:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 1400px) {
+  .rm-navbar-top .rm-desktop a {
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .rm-navbar-top .rm-desktop a {
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .rm-navbar-top .rm-desktop .icon {
+    display: none;
+  }
+}
+.rm-navbar-max.rm-navbar {
+  display: inline-block;
+}
+.rm-navbar-max .rm-button {
+  position: relative;
+  top: 3px;
+  font-size: 1.5em;
+}
+.rm-navbar-max .rm-mobile {
+  background-color: #444;
+  text-align: left;
+}
+.rm-navbar-max .rm-mobile a {
+  color: #fff;
+}
+.rm-navbar-max .rm-mobile a:hover {
+  background-color: #555;
+}
 /**
  * Figure and figcaption.
  */
-/**
-* Figure with ASCIINEMA
-*/
-figure.asciinema {
-  display: block;
-}
-figure.asciinema figcaption {
-  display: block;
-}
-figure.asciinema .asciicast {
-  margin: 0 !important;
-}
 /** --------------------------------------------------------------
  * Figure through .figure
  */
@@ -5516,6 +5573,7 @@ figure.figure figcaption {
 }
 figure.figure figcaption p {
   margin-top: 0;
+  font-style: italic;
 }
 figure.figure td img {
   max-width: none;
@@ -5568,6 +5626,18 @@ figure.figure.center figcaption {
     margin-left: 0;
     margin-right: 0;
   }
+}
+/**
+* Figure with ASCIINEMA
+*/
+figure.asciinema {
+  display: block;
+}
+figure.asciinema figcaption {
+  display: block;
+}
+figure.asciinema .asciicast {
+  margin: 0 !important;
 }
 /**
  * Image overlay (need more explanation).
@@ -6515,79 +6585,6 @@ html.hgrid .inner-wrap {
 }
 .profile .login .text {
   display: none;
-}
-/** --------------------------------------------------------------
- * Navbar
- *
- */
-.rm-max.rm-navbar {
-  top: 6px;
-}
-.rm-navbar-top {
-  text-align: center;
-}
-.rm-navbar-top.rm-navbar {
-  font-family: Verdana, Geneva, sans-serif;
-  line-height: 1;
-  font-size: 22px;
-  top: 10px;
-}
-.rm-navbar-top .rm-desktop a {
-  color: #333;
-  padding: 0 30px;
-  text-decoration: none;
-  transition: all 0.6s linear;
-}
-.rm-navbar-top .rm-desktop li:first-child a {
-  padding-left: 0;
-}
-.rm-navbar-top .rm-desktop li:last-child a {
-  padding-right: 0;
-}
-.rm-navbar-top .rm-desktop li.selected a,
-.rm-navbar-top .rm-desktop a:hover {
-  color: #3B440D;
-  text-shadow: 0px 0px 1px #9FB129;
-  text-decoration: underline;
-}
-.rm-navbar-top .rm-desktop li.selected a {
-  text-decoration: none;
-}
-.rm-navbar-top .rm-desktop li.selected a:hover {
-  text-decoration: underline;
-}
-@media screen and (max-width: 1400px) {
-  .rm-navbar-top .rm-desktop a {
-    padding: 0 20px;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .rm-navbar-top .rm-desktop a {
-    padding: 0 10px;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .rm-navbar-top .rm-desktop .icon {
-    display: none;
-  }
-}
-.rm-navbar-max.rm-navbar {
-  display: inline-block;
-}
-.rm-navbar-max .rm-button {
-  position: relative;
-  top: 3px;
-  font-size: 1.5em;
-}
-.rm-navbar-max .rm-mobile {
-  background-color: #444;
-  text-align: left;
-}
-.rm-navbar-max .rm-mobile a {
-  color: #fff;
-}
-.rm-navbar-max .rm-mobile a:hover {
-  background-color: #555;
 }
 /** --------------------------------------------------------------
  * Linkedin badges

@@ -5516,6 +5516,7 @@ figure.figure figcaption {
 }
 figure.figure figcaption p {
   margin-top: 0;
+  font-style: italic;
 }
 figure.figure td img {
   max-width: none;

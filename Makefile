@@ -233,7 +233,7 @@ styleguide-update:
 # LESS.
 #
 # target: less                    - Compile the LESS stylesheet(s).
-less: less-css less-min-css less-lint
+less: less-css less-min-css
 	@$(call HELPTEXT,$@)
 	@rsync -a $(BUILD)/less/css htdocs/
 
@@ -251,7 +251,6 @@ $(BUILD)/less/css/%.min.css: $(SOURCE)/%.less
 
 $(BUILD)/less/lint/%.less: $(SOURCE)/%.less
 	@$(call ACTION_MESSAGE,$< -> $@)
-	@touch $@
 	$(LESSC) --lint $< $@
 
 $(LESS_SOURCES): $(LESS_MODULES)
