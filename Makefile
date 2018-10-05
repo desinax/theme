@@ -92,15 +92,7 @@ LESS_MODULES = $(shell find $(SOURCE) -mindepth 2 -name '*.less')
 #SCSS_INCLUDE_PATH = $(SOURCEDIR)
 
 DESINAX_MODULES = $(shell cd $(SOURCE) && find @desinax -mindepth 1 -maxdepth 1 -type d)
-	# @desinax/figure
-	# @desinax/responsive-menu
-	# @desinax/typographic-grid
-	# @desinax/vertical-grid
 
-
-# all:
-# 	@echo "LESS:"
-# 	@echo $(LESS_MODULES)
 
 
 # ------------------------------------------------------------------------
@@ -218,6 +210,7 @@ modules-install: modules-desinax-install
 # ------------------------------------------------------------------------
 #
 # Validation according to CSS-styleguide.
+# @TODO Clean up this rule, is it active?
 #
 # target: styleguide-update       - Update styleguide validation files.
 .PHONY: styleguide-update
@@ -233,7 +226,7 @@ styleguide-update:
 # LESS.
 #
 # target: less                    - Compile the LESS stylesheet(s).
-less: less-css less-min-css
+less: prepare less-css less-min-css
 	@$(call HELPTEXT,$@)
 	@rsync -a $(BUILD)/less/css htdocs/
 

@@ -5480,8 +5480,8 @@ a.rm-button.rm-clicked .rm-button-face-2 {
  * Figure and figcaption.
  */
 /**
-* Figure with ASCIINEMA
-*/
+ * Figure with ASCIINEMA
+ */
 figure.asciinema {
   display: block;
 }

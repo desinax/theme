@@ -74,6 +74,25 @@
 @import "modules/links/toc.less";
 @import "modules/links/list.less";
 
+//  breadcrumb.less
+.breadcrumb-list,
+.bullet-list {
+    margin-bottom: @magicNumber;
+    #hgrid .fontSize(@fontSizeSmall);
+    li {
+        .anchorAnonymous();
+    }
+}
+
+// Killed file links.less
+.anchor(@anchorColor, @anchorColorHover, @anchorColorVisited);
+
+.footer {
+  .anchor(@anchorColor2)
+}
+
+
+
 /**
  * Custom links for this site.
  * @TODO check and clean up and try to make part of other module (links).
@@ -244,6 +263,7 @@
  */
 @import "@desinax/figure/less/figure.less";
 @import "@desinax/figure/less/asciinema.less";
+@import "@desinax/figure/less/codepen.less";
 
 
 
@@ -260,6 +280,10 @@
  * @TODO check and clean up and explain what this style does, refactor it.
  */
 @import "modules/customize.less";
+
+.site-logo-text {
+    font-family: @fontFamilyLogo; // OBSOLETE try to remove to individual
+}
 
 .fab.fa-icon:hover {
     color: green;

@@ -5628,8 +5628,8 @@ figure.figure.center figcaption {
   }
 }
 /**
-* Figure with ASCIINEMA
-*/
+ * Figure with ASCIINEMA
+ */
 figure.asciinema {
   display: block;
 }
@@ -5638,6 +5638,13 @@ figure.asciinema figcaption {
 }
 figure.asciinema .asciicast {
   margin: 0 !important;
+}
+/**
+ * Figure with Codepen
+ */
+.figure-codepen,
+figure.codepen {
+  width: 100%;
 }
 /**
  * Image overlay (need more explanation).
