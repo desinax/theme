@@ -3,6 +3,22 @@ Revision History
 
 
 
+v1.0.4 (2018-10-05)
+------------------------
+
+* Align README for all modules.
+* Add htdocs/ for test using html and generated css.
+
+
+
+v1.0.3 (2018-10-05)
+------------------------
+
+* Remove package-lock.json.
+* Update Makefile with other modules.
+
+
+
 v1.0.2 (2018-04-15)
 ------------------------
 

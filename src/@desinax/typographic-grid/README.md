@@ -2,6 +2,8 @@ Desinax Typographic Grid (LESS)
 ===============================
 
 [![npm version](https://badge.fury.io/js/desinax-typographic-grid.svg)](https://badge.fury.io/js/desinax-typographic-grid)
+[![Join the chat at https://gitter.im/desinax/typographic-grid](https://badges.gitter.im/desinax/typographic-grid.svg)](https://gitter.im/desinax/typographic-grid?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/desinax/typographic-grid.svg?branch=master)](https://travis-ci.org/desinax/typographic-grid)
 [![CircleCI](https://circleci.com/gh/desinax/typographic-grid.svg?style=svg)](https://circleci.com/gh/desinax/typographic-grid)
 
@@ -19,6 +21,13 @@ You can install using npm.
 ```text
 npm install @desinax/typographic-grid
 ```
+
+
+
+Usage
+-------------------------------
+
+You can review example usage HTML with generated CSS-files in the directory `htdocs/`. Open your browser to that directory and look around in the available files.
 
 
 

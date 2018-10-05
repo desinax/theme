@@ -1,8 +1,17 @@
 /**
- * Stylesheet for dbwebb.se.
+ * Stylesheet for dbwebb.se, the modules are included in the following order:
+ * 1. Normalize the style.
+ * 2. General mixins, nice to have utilities.
+ * 3. Base for layout, horisontal and vertical grid.
+ * 4. Useful external modules.
+ * 5. Useful internal modules.
+ * 6. Set the base style from base/[file].less.
+ * 7. Set the layout style from layout/[file].less.
+ * 8. General customizations, last in this file.
+ * Where to put media queries?
  */
 /**
- * Normalize.
+ * Normalize and reset the style.
  */
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -304,7 +313,75 @@ template {
   display: none;
 }
 /**
- * Font Awesome
+ * Mixins within the namespace #desinax-mixin.
+ * @TODO clean up what mixins are used
+ */
+/**
+ * A small clearfix:
+ * http://stackoverflow.com/questions/211383/what-methods-of-clearfix-can-i-use
+ */
+/** ------------------------------------------------------------------ 
+ * Mixins
+ */
+/** ------------------------------------------------------------------ 
+ * The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+ */
+/*
+.clearfix() {
+    *zoom:1;
+
+    &:before,
+    &:after {
+        content:"";
+        display:table;
+    }
+    &:after {
+        clear:both;
+    }
+}
+*/
+/** ------------------------------------------------------------------ 
+ * Wrap elements to site width in grid layout
+ */
+/*
+.wrap(@extra-width: 0) {
+    width: @total-width + @extra-width;
+    max-width: @maxWidth;
+    margin: 0 auto;
+    .clearfix();
+}
+*/
+/** ------------------------------------------------------------------ 
+ * Always show the scrollbar
+ */
+/*
+.alwaysShowScrollbar() {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+*/
+/** ------------------------------------------------------------------ 
+ * Typography. Calculate font-size and line-height.
+ */
+/** ------------------------------------------------------------------ 
+ * Anchors.
+ */
+/*.link-no-style(){
+  a{color:inherit;text-decoration:none;
+    &:hover{color:@anchorColor;text-decoration:underline;}
+  }
+}*/
+/** --------------------------------------------------------------
+ * CSS3 mixins.
+ * 
+ */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/**
+ * Font Awesome.
  */
 /*!
  * Font Awesome Free 5.3.1 by @fontawesome - https://fontawesome.com
@@ -4103,948 +4180,31 @@ template {
   font-family: 'Font Awesome 5 Brands';
 }
 /**
- * Vertical grid
- */
-/**
- * Fluid and Responsive Vertical Grid
- */
-/**
- * A small clearfix:
- * http://stackoverflow.com/questions/211383/what-methods-of-clearfix-can-i-use
- */
-/**
- * Namespace what could be namespaced
- */
-#vgrid {
-  /**
-     * Wrap grid in a container.
-     */
-  /**
-     * Show grid.
-     */
-  /**
-     * All columns must be wrapped in a row.
-     */
-  /**
-     * Create a column spanning @col columns.
-     */
-  /**
-     * Push a column @offset columns.
-     */
-  /**
-     * Pull a column left @offset columns.
-     */
-  /**
-     * Pull a column right @offset columns.
-     */
-}
-/**
- * Typographic grid
- */
-/**
- * Import the parts making up the typographic grid.
- */
-/**
- * Typographic font families to choose from.
- */
-/**
- * Default font-families
- */
-/**
- * Typographic sizes for horisontal rythm.
- */
-/**
- * Magic number for vertical rythm
- * @magicNumber = @fontSizeBody * @lineHeight
- */
-/* 16px - 100%/1.5 */
-/**
- * Size and lineheight calculation for magicNumber 24
- *
- * 3em     * 16px   = 48 => line-height: 48    = 1
- * 2.875em * 16px   = 46 => line-height: 48/44 = 1.0435
- * 2.75em  * 16px   = 44 => line-height: 48/44 = 1.0909
- * 2.625em * 16px   = 42 => line-height: 48/42 = 1.1429
- * 2.5em   * 16px   = 40 => line-height: 48/40 = 1.2
- * 2.375em * 16px   = 38 => line-height: 48/38 = 1.2632
- * 2.25em  * 16px   = 36 => line-height: 48/36 = 1.3333
- * 2.125em * 16px   = 34 => line-height: 48/34 = 1.4118
- * 2em     * 16px   = 32 => line-height: 48/32 = 1.5
- * 1.875em * 16px   = 30 => line-height: 48/30 = 1.6
- * 1.75em  * 16px   = 28 => line-height: 48/28 = 1.7143
- * 1.625em * 16px   = 26 => line-height: 48/26 = 1.8462
- * 1.5em   * 16px   = 24 => line-height: 24    = 1
- * 1.375em * 16px   = 22 => line-height: 24/22 = 1.0909
- * 1.25em  * 16px   = 20 => line-height: 24/20 = 1.2
- * 1.125em * 16px   = 18 => line-height: 24/18 = 1.3333
- * 1em     * 16px   = 16 => line-height: 24/16 = 1.5
- * 0.875em * 16px   = 14 => line-height: 24/14 = 1.7143
- * 0.75em  * 16px   = 12 => line-height: 24/12 = 2
- */
-/**
- * Size and lineheight calculation for magicNumber 22
- *
- * 3em     * 16px   = 48 => line-height: 66/48 = 1.375
- * 2.875em * 16px   = 46 => line-height: 66/46 = 1.4348
- * 2.75em  * 16px   = 44 => line-height: 44    = 1
- * 2.625em * 16px   = 42 => line-height: 44/42 = 1.0476
- * 2.5em   * 16px   = 40 => line-height: 44/40 = 1.1
- * 2.375em * 16px   = 38 => line-height: 44/38 = 1.1579
- * 2.25em  * 16px   = 36 => line-height: 44/36 = 1.2222
- * 2.125em * 16px   = 34 => line-height: 44/34 = 1.2941
- * 2em     * 16px   = 32 => line-height: 44/32 = 1.375
- * 1.875em * 16px   = 30 => line-height: 44/30 = 1.4667
- * 1.75em  * 16px   = 28 => line-height: 44/28 = 1.5714
- * 1.625em * 16px   = 26 => line-height: 44/26 = 1.6923
- * 1.5em   * 16px   = 24 => line-height: 44/24 = 1.8333
- * 1.375em * 16px   = 22 => line-height: 22    = 1
- * 1.25em  * 16px   = 20 => line-height: 22/20 = 1.1
- * 1.125em * 16px   = 18 => line-height: 22/18 = 1.2222
- * 1em     * 16px   = 16 => line-height: 22/16 = 1.375
- * 0.875em * 16px   = 14 => line-height: 22/14 = 1.5714
- * 0.75em  * 16px   = 12 => line-height: 22/12 = 1.8333
-*/
-/**
- * Typographic mixins.
- */
-/**
- * Typographic defaults.
- */
-/**
- * Headings
- */
-/**
- * Text elements
- */
-/**
- * Display source code.
- */
-/**
- * Lists
- */
-/**
- * Tables. Because of the need for padding on TH and TD, the vertical rhythm
- * on table cells has to be 1.5*@magic-number.
- */
-/**
- * More typography elements
- */
-/**
- * Activate default settings for fonts.
- */
-/*
-.inner-wrap-main {
-    //background-image: url(/img/grid/horisontal-grid-22.png);
-    //background-image: url(/img/grid/horisontal-grid-24.png);
-}
-
-body {
-    #hgrid .font();
-}
-
-.typographyHeadings();
-.typographyTextElements();
-.typographyCodeElements();
-.typographyListElements();
-.typographyTableElements();
-.typographyOtherElements();
-*/
-/**
- * General variables used all over.
- * @TODO check if this is used and needed, clean it up.
- */
-/** ------------------------------------------------------------------ 
- * Variables
- */
-/** ------------------------------------------------------------------ 
- * Grid
- * See semanticgs.less for more settings.
+ * Desinax general modules, namespace #desinax-general. (You must enable
+ * the style you want and add layout.)
+ * @TODO check and clean up, add namespace.
  */
 /** --------------------------------------------------------------
- * Typography.
- *
+ * Byline for author information
  */
-/**
- * Font families to choose from. 
- */
-/*
-// Monospace
-@fontFamilyCourier:         "Courier New", Courier, monospace;
-@fontFamilyMonospace:       monospace;
-
-// Serif
-@fontFamilyCambria:         Cambria, Georgia, Times, 'Times New Roman', serif;
-@fontFamilyTimes:           Times, 'Times New Roman', serif;
-@fontFamilyGaramond:        Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, "Times New Roman", Times, serif;
-
-// Sans-serif
-@fontFamilyHelvetica:       Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-@fontFamilyCalibri:         Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-@fontFamilyMyriadPro:       MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
-@fontFamilyHelveticaNeue:   "Helvetica Neue", Helvetica, Arial, sans-serif;
-@fontFamilyArial:           Arial, sans-serif;
-
-*/
-/**
- * Default font-families
- */
-/*
-@fontFamilyHeadings:  @fontFamilyTimes;
-@fontFamilyBody:      @fontFamilyTimes;
-@fontFamilyCode:      @fontFamilyMonospace;
-@fontFamilySiteTitle: @fontFamilyTimes;
-*/
-/**
- * Magic number for vertical rythm
- */
-/*
-@magicNumber:   22px; /* 16px - 100%/1.375 */
-/*
-@fontSizeBody:  16px;
-@lineHeight:    (unit(@magicNumber) / unit(@fontSizeBody));
-*/
-/**
- * Headings calculation 
- *
- * 2.75em  * 16px   = 44 => line-height: 44 = 1
- * 2.375em * 16px   = 38 => line-height: 44/38 = 1.1579
- * 2.25em  * 16px   = 36 => line-height: 44/36 = 1.2222
- * 2em     * 16px   = 32 => line-height: 44/32 = 1.375
- * 1.875em * 16px   = 30 => line-height: 44/30 = 1.4667
- * 1.75em  * 16px   = 28 => line-height: 44/28 = 1.5714
- * 1.375em * 16px   = 22 => line-height: 22 = 1
- * 1.25em  * 16px   = 20 => line-height: 22/20 = 1.1
- * 1em     * 16px   = 16 => line-height: 22/16 = 1.375
- * 0.875em * 16px   = 14 => line-height: 22/14 = 1.5714
- * 0.75em  * 16px   = 12 => line-height: 22/12 = 1.8333
- */
-/*
-@fontSizeH1: 2.375em;
-@fontSizeH2: 1.875em;
-@fontSizeH3: 1.375em;
-@fontSizeH4: 1.25em;
-@fontSizeH5: 1em;
-@fontSizeH6: 1em;
-
-@fontSizeSmall: 0.875em;
-
-@fontSizeSiteTitle: 3em;
-
-@fontSizeSearchH2: 1.25em;
-*/
-/** --------------------------------------------------------------
- * General colors to colorize the site
- */
-/** --------------------------------------------------------------
- * Standard colors
- */
-/**
- * Mixins.
- * @TODO clean up what mixins are used
- */
-/** ------------------------------------------------------------------ 
- * Mixins
- */
-/** ------------------------------------------------------------------ 
- * The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
- */
-/*
-.clearfix() {
-    *zoom:1;
-
-    &:before,
-    &:after {
-        content:"";
-        display:table;
-    }
-    &:after {
-        clear:both;
-    }
+.author-byline {
+  border: 1px solid #ccc;
+  margin-bottom: 46px;
+  padding: 1em;
 }
-*/
-/** ------------------------------------------------------------------ 
- * Wrap elements to site width in grid layout
- */
-/*
-.wrap(@extra-width: 0) {
-    width: @total-width + @extra-width;
-    max-width: @maxWidth;
-    margin: 0 auto;
-    .clearfix();
-}
-*/
-/** ------------------------------------------------------------------ 
- * Always show the scrollbar
- */
-/*
-.alwaysShowScrollbar() {
-    overflow: -moz-scrollbars-vertical;
-    overflow-y: scroll;
-}
-*/
-/** ------------------------------------------------------------------ 
- * Typography. Calculate font-size and line-height.
- */
-/** ------------------------------------------------------------------ 
- * Anchors.
- */
-/*.link-no-style(){
-  a{color:inherit;text-decoration:none;
-    &:hover{color:@anchorColor;text-decoration:underline;}
-  }
-}*/
-/** --------------------------------------------------------------
- * CSS3 mixins.
- * 
- */
-/**
- * Boxes for notice, warning, error and other messages.
- * @TODO check and clean up
- */
-/** --------------------------------------------------------------
- * Notice, warning and error
- */
-.info,
-.warning {
-  padding: 0.5em;
-  margin-bottom: 20px;
-}
-.info .icon,
-.warning .icon {
-  float: right;
-  padding: 0 0 0.5em 0.5em;
-}
-.info {
-  border: 2px solid #92cae4;
-  color: #205791;
-  background: #d5edf8;
-}
-.warning {
-  border: 2px solid #d1d12e;
-  color: #3f3f0e;
-  background: #ededab;
-}
-/**
- * Revision history.
- * @TODO check and clean up
- */
-/** ------------------------------------------------------------------ 
- * Revision history
- */
-.revision-history {
-  list-style: none;
-  margin: 0;
-  margin-bottom: 24px;
-  padding-left: 0;
-  color: #666;
-}
-/**
- * Links and navigation
- * @TODO check and clean up
- */
-/** --------------------------------------------------------------
- * Links and navigation.
- * 
- */
-/**
- * Anchors
- *
- */
-a {
-  color: #33b;
-  text-decoration: underline;
-}
-a:visited {
-  color: #838;
-}
-a:hover {
-  color: #33f;
-  text-decoration: none;
-}
-.footer a {
-  color: #448;
-  text-decoration: underline;
-}
-.footer a:visited {
-  color: inherit;
-}
-.footer a:hover {
-  color: inherit;
-  text-decoration: none;
-}
-/** --------------------------------------------------------------
- * Anchor for headers with id
- */
-h2:hover .header-anchor,
-h3:hover .header-anchor,
-h4:hover .header-anchor {
-  display: block;
-}
-.header-anchor {
-  display: none;
-  position: relative;
-  float: right;
-  color: #ccc;
-  margin-left: -1em;
-  text-decoration: none;
-}
-.header-anchor:hover {
-  text-decoration: underline;
-}
-@media screen and (max-width: 900px) {
-  .header-anchor {
-    display: block;
-    color: #ddd;
-  }
-}
-/** --------------------------------------------------------------
- * Breadcrumb
- */
-.breadcrumb-list,
-.bullet-list {
-  margin-bottom: 24px;
-  font-size: 0.875em;
-  line-height: 1.71428571;
-}
-.breadcrumb-list ul,
-.bullet-list ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.breadcrumb-list li,
-.bullet-list li {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-.breadcrumb-list li a,
-.bullet-list li a {
-  color: inherit;
-  text-decoration: none;
-}
-.breadcrumb-list li a:hover,
-.bullet-list li a:hover {
-  color: #33f;
-  text-decoration: underline;
-}
-.breadcrumb-list li::after,
-.bullet-list li::after {
-  content: " » ";
-}
-.bullet-list li::after {
-  content: " • ";
-}
-.bullet-list li:last-child::after {
-  content: "";
-}
-/** --------------------------------------------------------------
- * Next and previous navigation.
- * 
- */
-.next-previous {
-  margin-bottom: 24px;
-}
-.next-previous::after {
+.author-byline::after {
   content: "";
   display: block;
   clear: both;
 }
-.next-previous .next,
-.next-previous .previous {
-  width: 50%;
-}
-.next-previous .next {
-  float: right;
-  text-align: right;
-}
-.blog-toc-next-prev-page {
-  margin-bottom: 24px;
-}
-.blog-toc-next-prev-page::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.blog-toc-next-prev-page .next,
-.blog-toc-next-prev-page .previous,
-.blog-toc-next-prev-page .center {
-  width: 33%;
-}
-.blog-toc-next-prev-page .previous {
-  float: left;
-}
-.blog-toc-next-prev-page .next {
-  float: right;
-  text-align: right;
-}
-.blog-toc-next-prev-page .center {
-  float: right;
-  text-align: center;
-}
-/** ------------------------------------------------------------------ 
- * Table of content menu
- */
-/** ------------------------------------------------------------------ 
- * toc in column
- */
-.toc {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 24px;
-  /*
-    .level-0 {
-        margin-bottom: @magicNumber / 2;
-
-        .level-1,
-        .level-2 {
-            margin-bottom: 0;
-        }
-
-    }
-*/
-}
-.toc .level-1 {
-  padding-left: 0;
-}
-.toc .level-2 {
-  padding-left: 0;
-}
-.toc .section-header {
-  font-weight: bold;
-  border-bottom: 1px solid #eee;
-  margin-top: 24px;
-  margin-bottom: 12px;
-}
-.toc .selected {
-  background-color: #eee;
-  font-style: italic;
-}
-.article-toc .level-h2 {
-  padding-left: 0;
-}
-.article-toc .level-h3 {
-  padding-left: 0.5em;
-}
-.article-toc .level-h4 {
-  padding-left: 1em;
-}
-.toc-readmore ul {
-  list-style: circle;
-}
-/**
- * Style of lists.
- */
-.no-bullet ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-/**
- * Custom links for this site.
- * @TODO check and clean up and try to make part of other module (links).
- */
-/** --------------------------------------------------------------
- * Links
- * TODO change image color
- */
-/* External links           */
-a {
-  padding-right: 13px;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=") no-repeat scroll right center transparent;
-}
-a[href^="https://dbwebb.se"],
-a[href^="https://arkiv.dbwebb.se"],
-a[href^="http://local.dbwebb.se"],
-a[href^="http://do2.dbwebb.se"],
-a[href^="http://localhost"],
-a[href^="?"],
-a[href^="#"],
-a[href^="/"],
-.share a,
-.footer a,
-.figure a {
-  padding-right: 0;
-  background: none;
-}
-/* Links to pdf */
-a[href$=".pdf"] {
-  padding-right: 13px;
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAMCAYAAABbayygAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAZ0lEQVR4nGNgIAmknfmPjGXLL/2v3/T0P1aFyIAh7cx/49ZrWBSnnfn/8O3//2ceQDBD2pn/zz78/6/biK447cz/pSf//09bDMHozsBpIgw/fAvVhMtEGF56EotC6puIC2AoxItJAQBnweOKFBvqdQAAAABJRU5ErkJggg==') no-repeat scroll right center transparent;
-}
-/**
- * Structure and settings for current theme.
- * @TODO check and clean up
- */
-/** 
- * Structure for regions, rows and columns.
- *
- */
-/** ==============================================================
- * Base
- */
-html {
-  overflow-y: scroll;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
-/*
-.wrap-all {
-    //.showGrid(1100px);
-}
-
-.outer-wrap {
-    
-}
-
-.inner-wrap {
-    .container();
-    //max-width: 1100px;
-}
-
-.row {
-    .row();
-}
-*/
-/** ==============================================================
- * Header 
- */
-/*
-.site-header {
-
-}*/
-/** --------------------------------------------------------------
- * Navbar(s)
- */
-/*
-.navbar1 {
-    #vgrid .column(@columns);
-}
-
-.navbar2 {
-
-}
-*/
-/** --------------------------------------------------------------
- * Breadcrumb
- */
-.breadcrumb-wrap {
-  display: inline;
-  float: left;
-  width: 98.95833333%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-/** --------------------------------------------------------------
- * Flash area
- */
-.flash-wrap {
-  display: inline;
-  float: left;
-  width: 98.95833333%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-/** --------------------------------------------------------------
-* Columns above and below main
-*/
-/** --------------------------------------------------------------
- * General column elements.
- */
-.col2 {
-  display: inline;
-  float: left;
-  width: 48.95833333%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.col3 {
-  display: inline;
-  float: left;
-  width: 32.29166667%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.col4 {
-  display: inline;
-  float: left;
-  width: 23.95833333%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-#vgrid .column {
-  height: 100%;
-}
-.columns::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-/** ==============================================================
- * The main content area.
- *
- */
-/*
-.outer-wrap-main {
-
-}
-
-.inner-wrap-main {
-
-}*/
-.main {
-  display: inline;
-  float: left;
-  width: 65.625%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-  margin-left: 8.85416667%;
-}
-.main.has-sidebar-left {
-  display: inline;
-  float: left;
-  width: 65.625%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-  margin-left: 4.6875%;
-}
-.main.has-sidebar-right {
-  display: inline;
-  float: left;
-  width: 65.625%;
-  margin-right: 0.52083333%;
-  margin-left: 0.52083333%;
-}
-.main.has-sidebar-left.has-sidebar-right {
-  display: inline;
-  float: left;
-  width: 57.29166667%;
-  margin-right: 0.52083333%;
-  margin-left: 0.52083333%;
-}
-.sidebar-right,
-.sidebar-left {
-  display: inline;
-  float: left;
-  width: 28.125%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.sidebar-right {
-  margin-left: 4.6875%;
-}
-@media screen and (max-width: 650px) {
-  .main {
-    min-height: initial;
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-right: 0.52083333%;
-    margin-left: 0.52083333%;
-  }
-  .main.has-sidebar-left {
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-right: 0.52083333%;
-    margin-left: 0.52083333%;
-  }
-  .main.has-sidebar-right {
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-right: 0.52083333%;
-    margin-left: 0.52083333%;
-  }
-  .main.has-sidebar-left.has-sidebar-right {
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-right: 0.52083333%;
-    margin-left: 0.52083333%;
-  }
-  .sidebar-right,
-  .sidebar-left {
-    display: none;
-  }
-  .col3 {
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-  .col4 {
-    display: inline;
-    float: left;
-    width: 48.95833333%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-}
-/** ==============================================================
- * The footer area.
- *
- */
-.site-footer {
-  display: inline;
-  float: left;
-  width: 98.95833333%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-/** --------------------------------------------------------------
- * The footer column area.
- */
-.footer-column-wrapper::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.footer-column {
-  display: inline;
-  float: left;
-  width: 32.29166667%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.footer-column,
-.footer-column-x {
-  height: 100%;
-}
-/**
- * Forms styled.
- * @TODO check and clean up
- */
-/** --------------------------------------------------------------
- * Forms
- */
-input,
-textarea {
-  font: inherit;
-}
-input[readonly] {
-  color: #666;
-}
-/*
-label {
-  font-size: smaller;
-}
-*/
-.validation-failed {
-  border: 2px solid red;
-}
-.validation-message {
-  color: red;
-  font-size: smaller;
-}
-.form-action-link {
-  font-size: smaller;
-}
-textarea {
-  width: 100%;
-  height: 8em;
-}
-textarea.nowrap {
-  white-space: nowrap;
-}
-.content-edit input[type=text] {
-  width: 30em;
-}
-.content-edit textarea {
-  width: 40em;
-  height: 15em;
-}
-fieldset {
-  padding-top: 24px;
-}
-.span10 {
-  width: 400px;
-}
-.span12 {
-  width: 480px;
-}
-.span14 {
-  width: 560px;
-}
-/**
- * Format sourcecode for syntax highlight.
- */
-/*
-
-Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
-
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #F0F0F0;
-}
-.hljs,
-.hljs-subst {
-  color: #444;
-}
-.hljs-keyword,
-.hljs-attribute,
-.hljs-selector-tag,
-.hljs-meta-keyword,
-.hljs-doctag,
-.hljs-name {
-  font-weight: bold;
-}
-.hljs-built_in,
-.hljs-literal,
-.hljs-bullet,
-.hljs-code,
-.hljs-addition {
-  color: #1F811F;
-}
-.hljs-regexp,
-.hljs-symbol,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-link,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #BC6060;
-}
-.hljs-type,
-.hljs-string,
-.hljs-number,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-quote,
-.hljs-template-tag,
-.hljs-deletion {
-  color: #880000;
-}
-.hljs-title,
-.hljs-section {
-  color: #880000;
-  font-weight: bold;
-}
-.hljs-comment {
-  color: #888888;
-}
-.hljs-meta {
-  color: #2B6EA1;
-}
-.hljs-emphasis {
-  font-style: italic;
-}
-.hljs-strong {
-  font-weight: bold;
-}
-/**
- * Gallery.
- * @TODO check and clean up and explain what this style does.
- */
 /** --------------------------------------------------------------
  * Gallery ()
+ */
+/**
+ * Variables used in module
+ */
+/**
+ * Settings for module
  */
 .ly-gallery {
   width: 670px;
@@ -5119,8 +4279,660 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   min-height: 500px;
   margin: 8px;
 }
+/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0;
+}
+.hljs,
+.hljs-subst {
+  color: #444;
+}
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #1F811F;
+}
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060;
+}
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+.hljs-comment {
+  color: #888888;
+}
+.hljs-meta {
+  color: #2B6EA1;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+/** ==============================================================
+ * image overlay.
+ *
+ */
 /**
- * Content specific.
+ * Variables used in module
+ */
+/**
+ * Settings for in module
+ */
+.image-overlay {
+  position: relative;
+  margin-bottom: 48px;
+}
+.image-overlay .figure {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  max-width: 100%;
+}
+.image-overlay .figure figcaption {
+  display: block;
+}
+.image-overlay img {
+  max-width: 100%;
+}
+.image-overlay ul {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 1em;
+  border-left: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+.image-overlay li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #666;
+}
+.image-overlay li a {
+  display: inline-block;
+  padding: 0.3em 1.5em;
+  background-color: #eee;
+  outline: none;
+}
+.image-overlay li .active {
+  background-color: transparent;
+}
+/** --------------------------------------------------------------
+ * Notice, warning and error
+ */
+/**
+ * Variables used in module
+ */
+.info,
+.warning {
+  padding: 0.5em;
+  margin-bottom: 20px;
+}
+.info .icon,
+.warning .icon {
+  float: right;
+  padding: 0 0 0.5em 0.5em;
+}
+.info {
+  border: 2px solid #92cae4;
+  color: #205791;
+  background: #d5edf8;
+}
+.warning {
+  border: 2px solid #d1d12e;
+  color: #3f3f0e;
+  background: #ededab;
+}
+/** ------------------------------------------------------------------ 
+ * Revision history
+ */
+/**
+ * Variables used in module
+ */
+.revision-history {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 24px;
+  padding-left: 0;
+  color: #666;
+}
+/**
+ * Figure and figcaption mixins, namespace #desinax-figure. You must enable
+ * the style you want and add layout.
+ */
+/**
+ * Figure with ASCIINEMA
+ */
+/** --------------------------------------------------------------
+ * Figure through .figure
+ */
+/**
+ * Figure with Codepen
+ */
+figure.figure,
+figure.asciinema,
+figure.codepen,
+figure.figure-codepen {
+  display: table;
+  padding: 0;
+  margin: 0;
+  /* Chrome shinks images in td */
+  /* Position the images */
+  margin-bottom: 20px;
+}
+figure.figure img {
+  max-width: 100%;
+  display: block;
+}
+figure.figure figcaption {
+  display: table-caption;
+  caption-side: bottom;
+}
+figure.figure figcaption p {
+  margin-top: 0;
+  font-style: italic;
+}
+figure.figure td img {
+  max-width: none;
+}
+figure.figure.left {
+  float: left;
+  margin-right: 8px;
+}
+figure.figure.right {
+  float: right;
+  margin-left: 8px;
+}
+figure.figure.center {
+  clear: both;
+  margin: auto;
+}
+figure.figure.center figcaption {
+  text-align: center;
+}
+@media screen and (max-width: 600px) {
+  figure.figure.w50 {
+    width: 300px;
+  }
+  figure.figure.w25 {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 550px) {
+  figure.figure.w50 {
+    width: 225px;
+  }
+}
+@media screen and (max-width: 450px) {
+  figure.figure.w50 {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 400px) {
+  figure.figure.w50 {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 320px) {
+  figure.figure.w50 {
+    min-width: 100%;
+  }
+  figure.figure.left,
+  figure.figure.right {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+figure.figure figcaption {
+  padding-top: 12px;
+}
+figure.asciinema {
+  display: block;
+}
+figure.asciinema figcaption {
+  display: block;
+}
+figure.asciinema .asciicast {
+  margin: 0 !important;
+}
+figure.codepen,
+figure.figure-codepen {
+  width: 100%;
+}
+img.responsive {
+  max-width: 100%;
+}
+/**
+ * Vertical grid
+ */
+/**
+ * Fluid and Responsive Vertical Grid
+ */
+/**
+ * Namespace what could be namespaced
+ */
+#desinax-vgrid {
+  /**
+     * Wrap grid in a container.
+     */
+  /**
+     * Show grid.
+     */
+  /**
+     * All columns must be wrapped in a row.
+     */
+  /**
+     * Create a column spanning @col columns.
+     */
+  /**
+     * Push a column @offset columns.
+     */
+  /**
+     * Pull a column left @offset columns.
+     */
+  /**
+     * Pull a column right @offset columns.
+     */
+}
+html.vgrid .inner-wrap {
+  background: url("../img/theme/vertical-grid/grid950x24x30x10-nomargin.png") repeat-y fixed center center;
+  background-size: 100% auto;
+}
+@media (min-width: 1100px) {
+  html.vgrid .inner-wrap {
+    background-size: 1100px auto;
+  }
+}
+html.vgrid .inner-wrap.inner-wrap-header {
+  background: url("../img/theme/vertical-grid/grid950x24x30x10-nomargin.png") repeat-y fixed center center;
+  background-size: 100% auto;
+}
+@media (min-width: 100%) {
+  html.vgrid .inner-wrap.inner-wrap-header {
+    background-size: 100% auto;
+  }
+}
+/**
+ * Typographic grid in namespace #desinax-hgrid.
+ */
+/**
+ * Import the parts making up the typographic grid.
+ */
+/**
+ * Typographic font families to choose from.
+ */
+/**
+ * Default font-families
+ */
+/**
+ * Typographic sizes for horisontal rythm.
+ */
+/**
+ * Magic number for vertical rythm
+ * @magicNumber = @fontSizeBody * @lineHeight
+ */
+/* 16px - 100%/1.5 */
+/**
+ * Size and lineheight calculation for magicNumber 24
+ *
+ * 3em     * 16px   = 48 => line-height: 48    = 1
+ * 2.875em * 16px   = 46 => line-height: 48/44 = 1.0435
+ * 2.75em  * 16px   = 44 => line-height: 48/44 = 1.0909
+ * 2.625em * 16px   = 42 => line-height: 48/42 = 1.1429
+ * 2.5em   * 16px   = 40 => line-height: 48/40 = 1.2
+ * 2.375em * 16px   = 38 => line-height: 48/38 = 1.2632
+ * 2.25em  * 16px   = 36 => line-height: 48/36 = 1.3333
+ * 2.125em * 16px   = 34 => line-height: 48/34 = 1.4118
+ * 2em     * 16px   = 32 => line-height: 48/32 = 1.5
+ * 1.875em * 16px   = 30 => line-height: 48/30 = 1.6
+ * 1.75em  * 16px   = 28 => line-height: 48/28 = 1.7143
+ * 1.625em * 16px   = 26 => line-height: 48/26 = 1.8462
+ * 1.5em   * 16px   = 24 => line-height: 24    = 1
+ * 1.375em * 16px   = 22 => line-height: 24/22 = 1.0909
+ * 1.25em  * 16px   = 20 => line-height: 24/20 = 1.2
+ * 1.125em * 16px   = 18 => line-height: 24/18 = 1.3333
+ * 1em     * 16px   = 16 => line-height: 24/16 = 1.5
+ * 0.875em * 16px   = 14 => line-height: 24/14 = 1.7143
+ * 0.75em  * 16px   = 12 => line-height: 24/12 = 2
+ */
+/**
+ * Size and lineheight calculation for magicNumber 22
+ *
+ * 3em     * 16px   = 48 => line-height: 66/48 = 1.375
+ * 2.875em * 16px   = 46 => line-height: 66/46 = 1.4348
+ * 2.75em  * 16px   = 44 => line-height: 44    = 1
+ * 2.625em * 16px   = 42 => line-height: 44/42 = 1.0476
+ * 2.5em   * 16px   = 40 => line-height: 44/40 = 1.1
+ * 2.375em * 16px   = 38 => line-height: 44/38 = 1.1579
+ * 2.25em  * 16px   = 36 => line-height: 44/36 = 1.2222
+ * 2.125em * 16px   = 34 => line-height: 44/34 = 1.2941
+ * 2em     * 16px   = 32 => line-height: 44/32 = 1.375
+ * 1.875em * 16px   = 30 => line-height: 44/30 = 1.4667
+ * 1.75em  * 16px   = 28 => line-height: 44/28 = 1.5714
+ * 1.625em * 16px   = 26 => line-height: 44/26 = 1.6923
+ * 1.5em   * 16px   = 24 => line-height: 44/24 = 1.8333
+ * 1.375em * 16px   = 22 => line-height: 22    = 1
+ * 1.25em  * 16px   = 20 => line-height: 22/20 = 1.1
+ * 1.125em * 16px   = 18 => line-height: 22/18 = 1.2222
+ * 1em     * 16px   = 16 => line-height: 22/16 = 1.375
+ * 0.875em * 16px   = 14 => line-height: 22/14 = 1.5714
+ * 0.75em  * 16px   = 12 => line-height: 22/12 = 1.8333
+*/
+/**
+ * Typographic mixins.
+ */
+/**
+ * Typographic defaults.
+ */
+#desinax-hgrid {
+  /**
+     * Headings
+     */
+  /**
+     * Text elements
+     */
+  /**
+     * Display source code.
+     */
+  /**
+     * Lists
+     */
+  /**
+     * Tables. Because of the need for padding on TH and TD, the vertical rhythm
+     * on table cells has to be 1.5*@magic-number.
+     */
+  /**
+     * More typography elements
+     */
+  /**
+     * Enable all default typographic elements.
+     */
+}
+/**
+ * Activate default settings for fonts.
+ */
+/*
+.inner-wrap-main {
+    //background-image: url(/img/grid/horisontal-grid-22.png);
+    //background-image: url(/img/grid/horisontal-grid-24.png);
+}
+
+body {
+    #hgrid .font();
+}
+
+.typographyHeadings();
+.typographyTextElements();
+.typographyCodeElements();
+.typographyListElements();
+.typographyTableElements();
+.typographyOtherElements();
+*/
+html.hgrid .inner-wrap {
+  background-image: url("../img/theme/typographic-grid/magic-number-24.png");
+}
+/**
+ * Links and navigation
+ * @TODO check and clean up
+ */
+/** --------------------------------------------------------------
+ * Anchor for headers with id
+ */
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor {
+  display: block;
+}
+.header-anchor {
+  display: none;
+  position: relative;
+  float: right;
+  color: #ccc;
+  margin-left: -1em;
+  text-decoration: none;
+}
+.header-anchor:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+  .header-anchor {
+    display: block;
+    color: #ddd;
+  }
+}
+/** --------------------------------------------------------------
+ * Breadcrumb
+ */
+.breadcrumb-list ul,
+.bullet-list ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.breadcrumb-list li,
+.bullet-list li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.breadcrumb-list li::after,
+.bullet-list li::after {
+  content: " » ";
+}
+.bullet-list li::after {
+  content: " • ";
+}
+.bullet-list li:last-child::after {
+  content: "";
+}
+/** --------------------------------------------------------------
+ * Links
+ * TODO change image color
+ */
+/* External links           */
+a {
+  padding-right: 13px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=") no-repeat scroll right center transparent;
+}
+a[href^="https://dbwebb.se"],
+a[href^="https://arkiv.dbwebb.se"],
+a[href^="http://local.dbwebb.se"],
+a[href^="http://do2.dbwebb.se"],
+a[href^="http://localhost"],
+a[href^="?"],
+a[href^="#"],
+a[href^="/"],
+.share a,
+.footer a,
+.figure a {
+  padding-right: 0;
+  background: none;
+}
+/* Links to pdf */
+a[href$=".pdf"] {
+  padding-right: 13px;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAMCAYAAABbayygAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAZ0lEQVR4nGNgIAmknfmPjGXLL/2v3/T0P1aFyIAh7cx/49ZrWBSnnfn/8O3//2ceQDBD2pn/zz78/6/biK447cz/pSf//09bDMHozsBpIgw/fAvVhMtEGF56EotC6puIC2AoxItJAQBnweOKFBvqdQAAAABJRU5ErkJggg==') no-repeat scroll right center transparent;
+}
+/**
+ * Style of lists.
+ */
+.no-bullet ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/** --------------------------------------------------------------
+ * Next and previous navigation.
+ */
+.next-previous {
+  margin-bottom: 24px;
+}
+.next-previous .next,
+.next-previous .previous {
+  width: 50%;
+}
+.next-previous .next {
+  float: right;
+  text-align: right;
+}
+.blog-toc-next-prev-page {
+  margin-bottom: 24px;
+}
+.blog-toc-next-prev-page .next,
+.blog-toc-next-prev-page .previous,
+.blog-toc-next-prev-page .center {
+  width: 33%;
+}
+.blog-toc-next-prev-page .previous {
+  float: left;
+}
+.blog-toc-next-prev-page .next {
+  float: right;
+  text-align: right;
+}
+.blog-toc-next-prev-page .center {
+  float: right;
+  text-align: center;
+}
+.next-previous::after,
+.blog-toc-next-prev-page::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/** ------------------------------------------------------------------ 
+ * Table of content menu
+ */
+/** ------------------------------------------------------------------ 
+ * toc in column
+ */
+.toc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 24px;
+  /*
+    .level-0 {
+        margin-bottom: @magicNumber / 2;
+
+        .level-1,
+        .level-2 {
+            margin-bottom: 0;
+        }
+
+    }
+*/
+}
+.toc .level-1 {
+  padding-left: 0;
+}
+.toc .level-2 {
+  padding-left: 0;
+}
+.toc .section-header {
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.toc .selected {
+  background-color: #eee;
+  font-style: italic;
+}
+.article-toc .level-h2 {
+  padding-left: 0;
+}
+.article-toc .level-h3 {
+  padding-left: 0.5em;
+}
+.article-toc .level-h4 {
+  padding-left: 1em;
+}
+.toc-readmore ul {
+  list-style: circle;
+}
+.breadcrumb-list,
+.bullet-list {
+  margin-bottom: 24px;
+  font-size: 0.875em;
+  line-height: 1.71428571;
+}
+.breadcrumb-list li a,
+.bullet-list li a {
+  color: inherit;
+  text-decoration: none;
+}
+.breadcrumb-list li a:hover,
+.bullet-list li a:hover {
+  color: #33f;
+  text-decoration: underline;
+}
+a {
+  color: #33b;
+  text-decoration: underline;
+}
+a:visited {
+  color: #838;
+}
+a:hover {
+  color: #33f;
+  text-decoration: none;
+}
+.footer a {
+  color: #448;
+  text-decoration: underline;
+}
+.footer a:visited {
+  color: inherit;
+}
+.footer a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.fab.fa-icon:hover {
+  color: green;
+}
+/**
+ * Use internal modules
  * @TODO check and clean up and explain what this style does.
  */
 /** --------------------------------------------------------------
@@ -5180,7 +4992,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .blog-list h1 {
   font-size: 1.875em;
   line-height: 1.6;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CCC;
 }
 .blog-list h1 a {
   color: inherit;
@@ -5191,7 +5003,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   text-decoration: underline;
 }
 .blog-post h1 {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CCC;
 }
 .blog-list-item {
   margin-bottom: 48px;
@@ -5216,18 +5028,451 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   text-decoration: underline;
 }
 /** --------------------------------------------------------------
- * Byline for author information
+ * Forms
  */
-.author-byline {
-  border: 1px solid #ccc;
-  margin-bottom: 46px;
-  padding: 1em;
+/**
+ * Variables used in module
+ */
+/**
+ * Settings
+ */
+input,
+textarea {
+  font: inherit;
 }
-.author-byline::after {
+input[readonly] {
+  color: #666;
+}
+/*
+label {
+  font-size: smaller;
+}
+*/
+.validation-failed {
+  border: 2px solid red;
+}
+.validation-message {
+  color: red;
+  font-size: smaller;
+}
+.form-action-link {
+  font-size: smaller;
+}
+textarea {
+  width: 100%;
+  height: 8em;
+}
+textarea.nowrap {
+  white-space: nowrap;
+}
+.content-edit input[type=text] {
+  width: 30em;
+}
+.content-edit textarea {
+  width: 40em;
+  height: 15em;
+}
+fieldset {
+  padding-top: 24px;
+}
+.span10 {
+  width: 400px;
+}
+.span12 {
+  width: 480px;
+}
+.span14 {
+  width: 560px;
+}
+/** --------------------------------------------------------------
+ * Linkedin badges
+ */
+.LI-profile-badge {
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+.LI-profile-badge .LI-badge-container.vertical.light {
+  min-height: 440px;
+}
+/**
+ * Base style to affect HTML elements on a general scale.
+ */
+/**
+ * Base style to affect HTML elements on a general scale.
+ */
+html {
+  overflow-y: scroll;
+  background-color: #424242;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: #111;
+  background-color: #fff;
+  font: 100.01%/1.5 Verdana, Geneva, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img,
+h6 img {
+  margin: 0;
+}
+h1 {
+  font-size: 2.375em;
+  line-height: 1.26315789;
+  font-weight: normal;
+  border-bottom: 1px solid #666;
+  margin-bottom: 23px;
+}
+h1 ~ h1,
+h1 ~ h2,
+h1 ~ h3,
+h1 ~ h4,
+h1 ~ h5,
+h1 ~ h6 {
+  margin-top: 48px;
+}
+h1 + h2 {
+  margin-top: 24px;
+}
+h2 {
+  font-size: 1.875em;
+  line-height: 1.6;
+  font-weight: normal;
+  margin-top: 48px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #CCC;
+}
+h2 + h3 {
+  margin-top: 24px;
+}
+h3 {
+  font-size: 1.375em;
+  line-height: 1.09090909;
+  font-weight: normal;
+  margin-top: 48px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #CCC;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.2;
+  font-weight: normal;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.5;
+}
+h6 {
+  font-size: 0.875em;
+  line-height: 1.71428571;
+}
+p {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+small,
+.small,
+.smaller {
+  font-size: 0.875em;
+}
+strong,
+b {
+  font-weight: bold;
+}
+mark {
+  color: #000;
+  background-color: #ff9;
+}
+abbr[title],
+dfn[title] {
+  text-decoration: dotted underline;
+}
+em,
+i,
+dfn {
+  font-style: italic;
+}
+sub,
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+blockquote {
+  border-left: 4px solid #eee;
+  padding-left: 1em;
+  margin-left: 0;
+  margin-bottom: 24px;
+}
+pre,
+code,
+kbd,
+samp,
+.code {
+  font-size: 1.25em;
+  font-family: monospace;
+}
+code,
+samp {
+  border: 1px solid #ccc;
+}
+code {
+  background-color: #eee;
+}
+pre,
+div.code,
+pre code {
+  font-size: 1.25em;
+  line-height: 1.6;
+  white-space: pre;
+}
+pre {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+pre code {
+  display: block;
+  overflow: auto;
+}
+div.code,
+pre code {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 23px;
+  margin-bottom: 23px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 0.5em;
+  background-color: #eee;
+}
+ul,
+ol {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-left: 1.5em;
+}
+ul p,
+ol p {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin: 0;
+}
+ul {
+  list-style-type: disc;
+}
+ol {
+  list-style-type: decimal;
+}
+dl {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+dl.horizontal dt {
+  clear: left;
+  float: left;
+  width: 7em;
+}
+dl.horizontal dd {
+  margin-left: 8em;
+  display: block;
+}
+dd {
+  margin-left: 1.5em;
+}
+article table,
+.table,
+.table1,
+.table2 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+table.full-width,
+article .table,
+.table,
+.table2 {
+  width: 100%;
+}
+article table,
+.table,
+.table2 {
+  border-collapse: collapse;
+  /*
+            tfoot {
+            }
+            */
+}
+article table caption,
+.table caption,
+.table2 caption {
+  font-size: 0.875em;
+  line-height: 1.71428571;
+  text-align: left;
+  font-style: italic;
+}
+article table thead,
+.table thead,
+.table2 thead {
+  box-shadow: 0 1px 0 #aaa;
+}
+article table th,
+.table th,
+.table2 th {
+  vertical-align: bottom;
+  font-weight: bold;
+  text-align: left;
+}
+article table th,
+.table th,
+.table2 th,
+article table td,
+.table td,
+.table2 td {
+  padding: 6px;
+}
+article table tr,
+.table tr,
+.table2 tr {
+  box-shadow: 0 1px 0 #ccc;
+}
+article table tr:hover,
+.table tr:hover,
+.table2 tr:hover {
+  color: #000;
+  background-color: #f6f6f6;
+  box-shadow: 0 1px 0 #666;
+}
+table.striped tbody tr:nth-child(even) td,
+table.striped tbody tr.even td {
+  background-color: #fafafa;
+}
+hr {
+  position: relative;
+  top: -2px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  margin-top: 35px;
+  margin-bottom: 36px;
+}
+hr::after {
+  content: "§";
+  position: relative;
+  top: -0.7em;
+  left: 50%;
+  padding: 0 0.25em;
+  background-color: #fff;
+}
+/**
+ * Layout style for general structure of header, navbar, main, footer
+ * and other regions of the page including route specific styles.
+ */
+/**
+ * Layout style for general structure of header, navbar, main, footer
+ * and other regions of the page including route specific styles.
+ */
+/** ==============================================================
+ * Horisontal grid setup 
+ */
+.inner-wrap {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1100px;
+}
+.inner-wrap.inner-wrap-header {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+}
+.row {
+  display: block;
+  width: 101.04166667%;
+  margin-left: -0.52083333%;
+  margin-right: -0.52083333%;
+}
+.row::after {
   content: "";
   display: block;
   clear: both;
 }
+/** ==============================================================
+ * Header 
+ */
+/*
+.site-header {
+
+}*/
+.logo-1 {
+  top: 55px;
+  left: 0;
+}
+.site-logo-text {
+  font-family: "Times New Roman", Times, serif;
+}
+.profile {
+  text-align: right;
+}
+.profile .profile-phpbb {
+  font-size: 2em;
+  line-height: 0;
+  position: absolute;
+  top: 21px;
+  right: 60px;
+}
+.profile .ucp a,
+.profile .login a {
+  color: #3B440D;
+}
+.profile .ucp a:hover,
+.profile .login a:hover {
+  color: #9FB129;
+}
+.profile .ucp .icon,
+.profile .login .icon {
+  position: relative;
+  top: -12px;
+}
+.profile .gravatar img {
+  border-radius: 50%;
+  vertical-align: -8px;
+}
+.profile .gravatar a:hover img {
+  opacity: 0.7;
+}
+.profile .logout {
+  display: none;
+}
+.profile .login .text {
+  display: none;
+}
+/** --------------------------------------------------------------
+ * Navbar(s)
+ */
 /**
  * A responsive menu.
  */
@@ -5545,174 +5790,223 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 .rm-navbar-max .rm-mobile a:hover {
   background-color: #555;
 }
-/**
- * Figure and figcaption.
- */
+/*
+.navbar1 {
+    #desinax-vgrid.column(@columns);
+}
+
+.navbar2 {
+
+}
+*/
 /** --------------------------------------------------------------
- * Figure through .figure
+ * Breadcrumb
  */
-img.responsive {
-  max-width: 100%;
-}
-figure.figure {
-  display: table;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 20px;
-  /* Chrome shinks images in td */
-  /* Position the images */
-}
-figure.figure img {
-  max-width: 100%;
-  display: block;
-}
-figure.figure figcaption {
-  display: table-caption;
-  caption-side: bottom;
-  padding-top: 12px;
-}
-figure.figure figcaption p {
-  margin-top: 0;
-  font-style: italic;
-}
-figure.figure td img {
-  max-width: none;
-}
-figure.figure.left {
+.breadcrumb-wrap {
+  display: inline;
   float: left;
-  margin-right: 8px;
+  width: 98.95833333%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
 }
-figure.figure.right {
-  float: right;
-  margin-left: 8px;
+/** --------------------------------------------------------------
+ * Flash area
+ */
+.flash-wrap {
+  display: inline;
+  float: left;
+  width: 98.95833333%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
 }
-figure.figure.center {
+/** --------------------------------------------------------------
+* Columns above and below main
+*/
+/** --------------------------------------------------------------
+ * General column elements.
+ */
+.col2 {
+  display: inline;
+  float: left;
+  width: 48.95833333%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+}
+.col3 {
+  display: inline;
+  float: left;
+  width: 32.29166667%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+}
+.col4 {
+  display: inline;
+  float: left;
+  width: 23.95833333%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+}
+#desinax-vgrid.column {
+  height: 100%;
+}
+.columns::after {
+  content: "";
+  display: block;
   clear: both;
-  margin: auto;
 }
-figure.figure.center figcaption {
-  text-align: center;
-}
-@media screen and (max-width: 600px) {
-  figure.figure.w50 {
-    width: 300px;
-  }
-  figure.figure.w25 {
-    width: 150px;
-  }
-}
-@media screen and (max-width: 550px) {
-  figure.figure.w50 {
-    width: 225px;
-  }
-}
-@media screen and (max-width: 450px) {
-  figure.figure.w50 {
-    width: 200px;
-  }
-}
-@media screen and (max-width: 400px) {
-  figure.figure.w50 {
-    width: 150px;
-  }
-}
-@media screen and (max-width: 320px) {
-  figure.figure.w50 {
-    min-width: 100%;
-  }
-  figure.figure.left,
-  figure.figure.right {
-    float: none;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-/**
- * Figure with ASCIINEMA
- */
-figure.asciinema {
-  display: block;
-}
-figure.asciinema figcaption {
-  display: block;
-}
-figure.asciinema .asciicast {
-  margin: 0 !important;
-}
-/**
- * Figure with Codepen
- */
-.figure-codepen,
-figure.codepen {
-  width: 100%;
-}
-/**
- * Image overlay (need more explanation).
- * @TODO check and clean up and explain what this style does.
- */
 /** ==============================================================
- * image overlay.
+ * The main content area.
  *
  */
-.image-overlay {
-  position: relative;
-  margin-bottom: 48px;
+/*
+.outer-wrap-main {
+
 }
-.image-overlay .figure {
-  display: block;
-  position: absolute;
-  z-index: -1;
-  max-width: 100%;
+
+.inner-wrap-main {
+
+}*/
+.main {
+  display: inline;
+  float: left;
+  width: 65.625%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+  margin-left: 8.85416667%;
 }
-.image-overlay .figure figcaption {
-  display: block;
+.main.has-sidebar-left {
+  display: inline;
+  float: left;
+  width: 65.625%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+  margin-left: 4.6875%;
 }
-.image-overlay img {
-  max-width: 100%;
+.main.has-sidebar-right {
+  display: inline;
+  float: left;
+  width: 65.625%;
+  margin-right: 0.52083333%;
+  margin-left: 0.52083333%;
 }
-.image-overlay ul {
-  display: block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  margin-top: 1em;
-  border-left: 1px solid #666;
-  border-bottom: 1px solid #666;
+.main.has-sidebar-left.has-sidebar-right {
+  display: inline;
+  float: left;
+  width: 57.29166667%;
+  margin-right: 0.52083333%;
+  margin-left: 0.52083333%;
 }
-.image-overlay li {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  border-right: 1px solid #666;
+.sidebar-right,
+.sidebar-left {
+  display: inline;
+  float: left;
+  width: 28.125%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
 }
-.image-overlay li a {
-  display: inline-block;
-  padding: 0.3em 1.5em;
-  background-color: #eee;
-  outline: none;
+.sidebar-right {
+  margin-left: 4.6875%;
 }
-.image-overlay li .active {
-  background-color: transparent;
+@media screen and (max-width: 650px) {
+  .main {
+    min-height: initial;
+    display: inline;
+    float: left;
+    width: 98.95833333%;
+    margin-right: 0.52083333%;
+    margin-left: 0.52083333%;
+  }
+  .main.has-sidebar-left {
+    display: inline;
+    float: left;
+    width: 98.95833333%;
+    margin-right: 0.52083333%;
+    margin-left: 0.52083333%;
+  }
+  .main.has-sidebar-right {
+    display: inline;
+    float: left;
+    width: 98.95833333%;
+    margin-right: 0.52083333%;
+    margin-left: 0.52083333%;
+  }
+  .main.has-sidebar-left.has-sidebar-right {
+    display: inline;
+    float: left;
+    width: 98.95833333%;
+    margin-right: 0.52083333%;
+    margin-left: 0.52083333%;
+  }
+  .sidebar-right,
+  .sidebar-left {
+    display: none;
+  }
+  .col3 {
+    display: inline;
+    float: left;
+    width: 98.95833333%;
+    margin-left: 0.52083333%;
+    margin-right: 0.52083333%;
+  }
+  .col4 {
+    display: inline;
+    float: left;
+    width: 48.95833333%;
+    margin-left: 0.52083333%;
+    margin-right: 0.52083333%;
+  }
 }
-/**
- * Customize.
- * @TODO check and clean up and explain what this style does, refactor it.
+/** ==============================================================
+ * The footer area.
+ *
  */
+.site-footer {
+  display: inline;
+  float: left;
+  width: 98.95833333%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+}
+/** --------------------------------------------------------------
+ * The footer column area.
+ */
+.footer-column-wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.footer-column {
+  display: inline;
+  float: left;
+  width: 32.29166667%;
+  margin-left: 0.52083333%;
+  margin-right: 0.52083333%;
+}
+.footer-column,
+.footer-column-x {
+  height: 100%;
+}
+/** ==============================================================
+ * Route specific style.
+ */
+.route- .outer-wrap-flash {
+  margin-bottom: 24px;
+}
+.route- .article {
+  margin-bottom: 0;
+}
+.route-kurser .outer-wrap-main,
+.route-material .outer-wrap-main,
+.route-utbildning .outer-wrap-main,
+.route-community .outer-wrap-main {
+  display: none;
+}
 /** --------------------------------------------------------------
  * Make your own custom style.
  *
  */
 /** ==============================================================
  * Base
- */
-html {
-  background-color: #424242;
-}
-body {
-  background-color: #fff;
-}
-/** --------------------------------------------------------------
- *  Typography
  */
 /** ==============================================================
  * Header 
@@ -5810,10 +6104,8 @@ body {
 }
 /** --------------------------------------------------------------
  * Logo and logo text
- *
  */
 .site-logo-text {
-  font-family: "Times New Roman", Times, serif;
   font-size: 42px;
   line-height: 1;
   text-shadow: 2px -2px 2px #ccc;
@@ -5863,183 +6155,9 @@ body {
     padding-right: 4px;
   }
 }
-/** ==============================================================
- * Navbar Only for dbwebb.se?
- *
- */
-/*
-.rm-navbar-top {
-    text-align: center;
-
-    &.rm-navbar {
-        font-family: @fontFamilyNavbar;
-        line-height: 1;
-        font-size: 22px;
-        top: 10px;
-    }
-
-    .rm-desktop {
-
-        a {
-            color: #333;
-            padding: 0 30px;
-            text-decoration: none;
-            transition: all 0.6s linear;
-        }
-
-        li:first-child a {
-            padding-left: 0;
-        }
-
-        li:last-child a {
-            padding-right: 0;
-        }
-
-        li.selected a,
-        a:hover {
-            color: @colorAccentHeader1;
-            text-shadow: 0px 0px 1px @colorAccentHeader2;
-            text-decoration: underline;
-        }
-
-        li.selected a {
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    @media screen and (max-width: 1400px) {
-        .rm-desktop {
-            a {
-                padding: 0 20px;
-            }
-        }
-    }
-
-    @media screen and (max-width: 1000px) {
-        .rm-desktop {
-            a {
-                padding: 0 10px;
-            }
-        }
-    }
-
-    @media screen and (max-width: 1000px) {
-        .rm-desktop {
-            .icon {
-                display: none;
-            }
-        }
-    }
-}
-
-
-
-.rm-navbar-max {
-    //font-size: 1em;
-
-    &.rm-navbar {
-        display: inline-block;
-    }
-
-    .rm-button {
-        position: relative;
-        top: 3px;
-        font-size: 1.5em;
-        //line-height: 0;
-    }
-
-    .rm-mobile {
-        background-color: #444;
-        text-align: left;
-
-        a {
-            color: #fff;
-
-            &:hover {
-                background-color: #555;
-            }
-        }
-    }
-}
-
-*/
-/** ==============================================================
- * Linkedin badges only dbwebb?
- */
-/*
-.LI-profile-badge {
-    float: left;
-    margin-right: 1em;
-    margin-bottom: 1em;
-
-    .LI-badge-container.vertical.light {
-        min-height: 440px;
-    }
-}
-*/
 .outer-wrap-after-main {
   margin-top: -48px;
 }
-/** ==============================================================
- * User profile & max manu (partly only dbwebb.se?)
- *
- */
-/*
-.profile {
-     text-align: right;
-
-     .profile-phpbb {
-         font-size: 2em;
-         line-height: 0;
-         position: absolute;
-         top: 21px;
-         right: 60px;
-     }
-
-    .ucp,
-    .login {
-        a {
-            color: @colorAccentHeader1;
-
-            &:hover {
-                color: @colorAccentHeader2;
-            }
-        }
-
-        .icon {
-            position: relative;
-            top: -12px;
-        }
-    }
-
-    .gravatar {
-        img {
-            border-radius: 50%;
-            vertical-align: -8px;
-        }
-
-        a:hover img {
-            opacity: 0.7;
-        }
-    }
-
-    .logout {
-        display: none;
-    }
-
-    .login {
-        .text {
-            display: none;
-        }
-    }
-}
-
-
-
 /** ==============================================================
  * Column above and below
  *
@@ -6060,12 +6178,6 @@ body {
  */
 .article {
   margin-bottom: 72px;
-}
-.article h1 {
-  border-bottom: 1px solid #666;
-}
-.article h2 {
-  border-bottom: 1px solid #ccc;
 }
 .article .block,
 .sidebar .block,
@@ -6202,405 +6314,6 @@ body {
     font-size: 2em;
   }
 }
-.fab.fa-icon:hover {
-  color: green;
-}
 /**
  * My settings.
  */
-/** --------------------------------------------------------------
- *  Typography
- */
-/** --------------------------------------------------------------
- *  Vertical Grid
- */
-.inner-wrap {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1100px;
-}
-.inner-wrap.inner-wrap-header {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
-}
-.row {
-  display: block;
-  width: 101.04166667%;
-  margin-left: -0.52083333%;
-  margin-right: -0.52083333%;
-}
-.row::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-html.vgrid .inner-wrap {
-  background: url("../img/theme/vertical-grid/grid950x24x30x10-nomargin.png") repeat-y fixed center center;
-  background-size: 100% auto;
-}
-@media (min-width: 1100px) {
-  html.vgrid .inner-wrap {
-    background-size: 1100px auto;
-  }
-}
-html.vgrid .inner-wrap.inner-wrap-header {
-  background: url("../img/theme/vertical-grid/grid950x24x30x10-nomargin.png") repeat-y fixed center center;
-  background-size: 100% auto;
-}
-@media (min-width: 100%) {
-  html.vgrid .inner-wrap.inner-wrap-header {
-    background-size: 100% auto;
-  }
-}
-/** --------------------------------------------------------------
- *  Horisontal Grid (Typographic grid, Baseline grid)
- */
-body {
-  font: 100.01%/1.5 Verdana, Geneva, sans-serif;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-h1 img,
-h2 img,
-h3 img,
-h4 img,
-h5 img,
-h6 img {
-  margin: 0;
-}
-h1 {
-  font-size: 2.375em;
-  line-height: 1.26315789;
-  font-weight: normal;
-  border-bottom: 1px solid #666;
-  margin-bottom: 23px;
-}
-h1 ~ h1,
-h1 ~ h2,
-h1 ~ h3,
-h1 ~ h4,
-h1 ~ h5,
-h1 ~ h6 {
-  margin-top: 48px;
-}
-h1 + h2 {
-  margin-top: 24px;
-}
-h2 {
-  font-size: 1.875em;
-  line-height: 1.6;
-  font-weight: normal;
-  margin-top: 48px;
-  margin-bottom: 23px;
-  border-bottom: 1px solid #999;
-}
-h2 + h3 {
-  margin-top: 24px;
-}
-h3 {
-  font-size: 1.375em;
-  line-height: 1.09090909;
-  font-weight: normal;
-}
-h4 {
-  font-size: 1.25em;
-  line-height: 1.2;
-  font-weight: normal;
-}
-h5 {
-  font-size: 1em;
-  line-height: 1.5;
-}
-h6 {
-  font-size: 0.875em;
-  line-height: 1.71428571;
-}
-p {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-small,
-.small,
-.smaller {
-  font-size: 0.875em;
-}
-strong,
-b {
-  font-weight: bold;
-}
-mark {
-  color: #000;
-  background-color: #ff9;
-}
-abbr[title],
-dfn[title] {
-  text-decoration: dotted underline;
-}
-em,
-i,
-dfn {
-  font-style: italic;
-}
-sub,
-sup {
-  font-size: 0.75em;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-sup {
-  top: -0.5em;
-}
-sub {
-  bottom: -0.25em;
-}
-blockquote {
-  border-left: 4px solid #eee;
-  padding-left: 1em;
-  margin-left: 0;
-  margin-bottom: 24px;
-}
-pre,
-code,
-kbd,
-samp,
-.code {
-  font-size: 1.25em;
-  font-family: monospace;
-}
-code,
-samp {
-  border: 1px solid #ccc;
-}
-code {
-  background-color: #eee;
-}
-pre,
-div.code,
-pre code {
-  font-size: 1.25em;
-  line-height: 1.6;
-  white-space: pre;
-}
-pre {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-pre code {
-  display: block;
-  overflow: auto;
-}
-div.code,
-pre code {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  margin-top: 23px;
-  margin-bottom: 23px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 0.5em;
-  background-color: #eee;
-}
-ul,
-ol {
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding-left: 1.5em;
-}
-ul p,
-ol p {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-  margin: 0;
-}
-ul {
-  list-style-type: disc;
-}
-ol {
-  list-style-type: decimal;
-}
-dl {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-dl.horizontal dt {
-  clear: left;
-  float: left;
-  width: 7em;
-}
-dl.horizontal dd {
-  margin-left: 8em;
-  display: block;
-}
-dd {
-  margin-left: 1.5em;
-}
-article table,
-.table,
-.table1,
-.table2 {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-table.full-width,
-article .table,
-.table,
-.table2 {
-  width: 100%;
-}
-article table,
-.table,
-.table2 {
-  border-collapse: collapse;
-  /*
-        tfoot {
-        }
-        */
-}
-article table caption,
-.table caption,
-.table2 caption {
-  font-size: 0.875em;
-  line-height: 1.71428571;
-  text-align: left;
-  font-style: italic;
-}
-article table thead,
-.table thead,
-.table2 thead {
-  box-shadow: 0 1px 0 #333;
-}
-article table th,
-.table th,
-.table2 th {
-  vertical-align: bottom;
-  font-weight: bold;
-  text-align: left;
-}
-article table th,
-.table th,
-.table2 th,
-article table td,
-.table td,
-.table2 td {
-  padding: 6px;
-}
-article table tr,
-.table tr,
-.table2 tr {
-  box-shadow: 0 1px 0 #ddd;
-}
-article table tr:hover,
-.table tr:hover,
-.table2 tr:hover {
-  color: #222;
-  background-color: #f6f6f6;
-  box-shadow: 0 1px 0 #aaa;
-}
-table.striped tbody tr:nth-child(even) td,
-table.striped tbody tr.even td {
-  background-color: #f6f6f6;
-}
-hr {
-  position: relative;
-  top: -2px;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  margin-top: 35px;
-  margin-bottom: 36px;
-}
-hr::after {
-  content: "§";
-  position: relative;
-  top: -0.7em;
-  left: 50%;
-  padding: 0 0.25em;
-  background-color: #fff;
-}
-html.hgrid .inner-wrap {
-  background-image: url("../img/theme/typographic-grid/magic-number-24.png");
-}
-/** --------------------------------------------------------------
- * Route specific style.
- */
-.route- .outer-wrap-flash {
-  margin-bottom: 24px;
-}
-.route- .article {
-  margin-bottom: 0;
-}
-.route-kurser .outer-wrap-main,
-.route-material .outer-wrap-main,
-.route-utbildning .outer-wrap-main,
-.route-community .outer-wrap-main {
-  display: none;
-}
-/** --------------------------------------------------------------
- *  Header
- */
-.logo-1 {
-  top: 55px;
-  left: 0;
-}
-.profile {
-  text-align: right;
-}
-.profile .profile-phpbb {
-  font-size: 2em;
-  line-height: 0;
-  position: absolute;
-  top: 21px;
-  right: 60px;
-}
-.profile .ucp a,
-.profile .login a {
-  color: #3B440D;
-}
-.profile .ucp a:hover,
-.profile .login a:hover {
-  color: #9FB129;
-}
-.profile .ucp .icon,
-.profile .login .icon {
-  position: relative;
-  top: -12px;
-}
-.profile .gravatar img {
-  border-radius: 50%;
-  vertical-align: -8px;
-}
-.profile .gravatar a:hover img {
-  opacity: 0.7;
-}
-.profile .logout {
-  display: none;
-}
-.profile .login .text {
-  display: none;
-}
-/** --------------------------------------------------------------
- * Linkedin badges
- */
-.LI-profile-badge {
-  float: left;
-  margin-right: 1em;
-  margin-bottom: 1em;
-}
-.LI-profile-badge .LI-badge-container.vertical.light {
-  min-height: 440px;
-}
