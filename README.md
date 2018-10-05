@@ -1,6 +1,9 @@
 Desinax base for themes
 =======================
 
+[![Build Status](https://travis-ci.org/desinax/theme.svg?branch=master)](https://travis-ci.org/desinax/theme)
+[![CircleCI](https://circleci.com/gh/desinax/theme.svg?style=svg)](https://circleci.com/gh/desinax/theme)
+
 This can be used for base when building a Desinax theme, with or without Desinax modules.
 
 
