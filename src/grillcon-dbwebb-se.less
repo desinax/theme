@@ -1,14 +1,5 @@
 /**
- * Stylesheet for dbwebb.se, the modules are included in the following order:
- * 1. Normalize the style.
- * 2. General mixins, nice to have utilities.
- * 3. Base for layout, horisontal and vertical grid.
- * 4. Useful external modules.
- * 5. Useful internal modules.
- * 6. Set the base style from base/[file].less.
- * 7. Set the layout style from layout/[file].less.
- * 8. General customizations, last in this file.
- * Where to put media queries?
+ * Stylesheet for grillcon.dbwebb.se.
  */
 
 /**
@@ -139,7 +130,7 @@ html.hgrid .inner-wrap {
 
 @import "@desinax/link/less/anchor-header.less";
 @import "@desinax/link/less/breadcrumb.less";
-@import "@desinax/link/less/links-extra-dbwebb.less";
+//@import "@desinax/link/less/links-extra-dbwebb.less";
 @import "@desinax/link/less/list.less";
 @import "@desinax/link/less/next-previous.less";
 @import "@desinax/link/less/toc.less";
@@ -183,6 +174,10 @@ html.hgrid .inner-wrap {
  */
 @import "base/base.less";
 
+body {
+    #desinax-hgrid.fontSize(@fontSizeBody);
+}
+
 
 
 /**
@@ -190,7 +185,7 @@ html.hgrid .inner-wrap {
  * and other regions of the page including route specific styles.
  */
 @import "layout/layout.less";
-@import "layout/dbwebb.se.less"; // Rearrange and move classic style to layout.less
+@import "layout/grillcon-dbwebb-se.less"; // Rearrange and move classic style to layout.less
 
 
 
@@ -200,9 +195,10 @@ html.hgrid .inner-wrap {
 @bgColorHtml: #424242;
 @bgColorBody: #fff;
 @colorBody:   #111;
+@baseFontSize: 130%;
 
-@fontFamilyHeadings: @fontFamilyCambria;
-@fontFamilyBody:     @fontFamilyVerdana;
+@fontFamilyHeadings: @fontFamilyMonospace;
+@fontFamilyBody:     @fontFamilyMonospace;
 @fontFamilyCode:     @fontFamilyCourier;
 
 @colorH1BorderBottom: #666;
@@ -213,9 +209,46 @@ html.hgrid .inner-wrap {
 @borderSizeH3: 1px;
 
 @magicNumber:  24px;
-@fontSizeBody: 16px;
+@fontSizeBody: 16px;  // 130%
 
 @columnWidth:   30;
 @gutterWidth:   10;
 @columns:       24;
 @gridType:      "float"; // "flex"
+
+@navbarFontFamily: @fontFamilyMonospace;
+
+
+.article .block h4,
+.columns-above .block h4,
+.columns-below .block h4,
+.sidebar .block h4 {
+   border-top: 2px solid #A3B505;
+   background-color: #41561F;
+   background-image: -moz-linear-gradient(left,#7D9457,#41561F);
+   background-image: -webkit-gradient(linear,0 0,100% 0,from(#7D9457),to(#41561F));
+   background-image: -webkit-linear-gradient(left,#7D9457,#41561F);
+   background-image: -o-linear-gradient(left,#7D9457,#41561F);
+   background-image: linear-gradient(to right,#7D9457,#41561F);
+   background-repeat: repeat-x;
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7D9457', endColorstr='#41561F', GradientType=1);
+   color: #fff;
+}
+
+.article h1,
+.article h2,
+.article h3 {
+   border-bottom: 1px solid #A3B505;
+}
+
+a {
+   color: #41561F;
+}
+
+a:hover {
+   color: #7D9457;
+}
+
+a:visited {
+   color: #536535;
+}

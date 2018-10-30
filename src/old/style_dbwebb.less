@@ -1,0 +1,296 @@
+/** 
+* dbwebb theme.
+*/
+@import "modules.less";
+@import "links-extra-dbwebb.less";
+
+
+
+/** --------------------------------------------------------------
+ *  Typography
+ */
+//@fontFamilyHeadings:  @fontFamilyWideSerif;
+@fontFamilyBody:      @fontFamilyVerdana;
+
+
+
+/** --------------------------------------------------------------
+ *  Anchors
+ */
+/*
+@anchorColor:         #ff0000;
+@anchorColor2:        #ff0000;
+@anchorColorHover:    #ff4600;
+@anchorColorActive:   #ff4600;
+@anchorColorVisited:  #ff3f00;
+*/
+
+
+
+/** --------------------------------------------------------------
+ *  Vertical Grid
+ */
+//@gridType: "flex";
+
+.inner-wrap {
+    @gridImage: "../img/theme/vertical-grid/grid950x24x30x10-nomargin.png";
+
+    #vgrid .grid(1100px);
+    //#vgrid .showGrid(1100px, @gridImage);
+
+    &.inner-wrap-header {
+        #vgrid .grid(100%);
+        //#vgrid .showGrid(100%, @gridImage);
+    }
+}
+
+.row {
+    #vgrid .row();
+}
+
+html.vgrid .inner-wrap {
+    @gridImage: "../img/theme/vertical-grid/grid950x24x30x10-nomargin.png";
+    #vgrid .showGrid(1100px, @gridImage);
+
+    &.inner-wrap-header {
+        #vgrid .showGrid(100%, @gridImage);
+    }
+}
+
+
+
+/** --------------------------------------------------------------
+ *  Horisontal Grid (Typographic grid, Baseline grid)
+ */
+body {
+    #hgrid .font();
+}
+
+.typographyHeadings();
+.typographyTextElements();
+.typographyCodeElements();
+.typographyListElements();
+.typographyTableElements();
+.typographyOtherElements();
+
+html.hgrid .inner-wrap {
+    @gridImage: "../img/theme/typographic-grid/magic-number-24.png";
+    #hgrid .showGrid(@gridImage);
+}
+
+
+
+/** --------------------------------------------------------------
+ * Route specific style.
+ */
+.route- {
+    .outer-wrap-flash {
+        margin-bottom: @magicNumber;
+    }
+
+    .article {
+        margin-bottom: 0;
+    }
+}
+
+.route-kurser,
+.route-material,
+.route-utbildning,
+.route-community {
+    .outer-wrap-main {
+        display: none;
+    }
+}
+
+
+
+/** --------------------------------------------------------------
+ *  Header
+ */
+@colorAccentHeader1:  #3B440D;
+@colorAccentHeader2:  #9FB129;
+
+.logo-1 {
+    top: 55px;
+    left: 0;
+}
+
+
+
+.profile {
+     text-align: right;
+
+     .profile-phpbb {
+         font-size: 2em;
+         line-height: 0;
+         position: absolute;
+         top: 21px;
+         right: 60px;
+     }
+
+    .ucp,
+    .login {
+        a {
+            color: @colorAccentHeader1;
+
+            &:hover {
+                color: @colorAccentHeader2;
+            }
+        }
+
+        .icon {
+            position: relative;
+            top: -12px;
+        }
+    }
+
+    .gravatar {
+        img {
+            border-radius: 50%;
+            vertical-align: -8px;
+        }
+
+        a:hover img {
+            opacity: 0.7;
+        }
+    }
+
+    .logout {
+        display: none;
+    }
+
+    .login {
+        .text {
+            display: none;
+        }
+    }
+}
+
+
+
+/** --------------------------------------------------------------
+ * Navbar
+ *
+ */
+@maxButtonFontSize:         2em;
+
+
+.rm-max {
+    &.rm-navbar {
+        top: 6px;
+    }
+}
+
+// Older to clean up?
+.rm-navbar-top {
+    text-align: center;
+
+    &.rm-navbar {
+        font-family: @fontFamilyNavbar;
+        line-height: 1;
+        font-size: 22px;
+        top: 10px;
+    }
+
+    .rm-desktop {
+
+        a {
+            color: #333;
+            padding: 0 30px;
+            text-decoration: none;
+            transition: all 0.6s linear;
+        }
+
+        li:first-child a {
+            padding-left: 0;
+        }
+
+        li:last-child a {
+            padding-right: 0;
+        }
+
+        li.selected a,
+        a:hover {
+            color: @colorAccentHeader1;
+            text-shadow: 0px 0px 1px @colorAccentHeader2;
+            text-decoration: underline;
+        }
+
+        li.selected a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        .rm-desktop {
+            a {
+                padding: 0 20px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .rm-desktop {
+            a {
+                padding: 0 10px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .rm-desktop {
+            .icon {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+.rm-navbar-max {
+    //font-size: 1em;
+
+    &.rm-navbar {
+        display: inline-block;
+    }
+
+    .rm-button {
+        position: relative;
+        top: 3px;
+        font-size: 1.5em;
+        //line-height: 0;
+    }
+
+    .rm-mobile {
+        background-color: #444;
+        text-align: left;
+
+        a {
+            color: #fff;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+    }
+}
+
+
+
+/** --------------------------------------------------------------
+ * Linkedin badges
+ */
+.LI-profile-badge {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    .LI-badge-container.vertical.light {
+        min-height: 440px;
+    }
+}

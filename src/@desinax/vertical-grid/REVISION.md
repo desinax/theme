@@ -3,6 +3,13 @@ Revision History
 
 
 
+v1.0.7 (2018-10-05)
+------------------------
+
+* Update namespace to #desinax-vgrid.
+
+
+
 v1.0.6 (2018-10-05)
 ------------------------
 

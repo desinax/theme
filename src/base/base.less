@@ -3,6 +3,12 @@
  */
 @bgColorHtml: #424242;
 @bgColorBody: #fff;
+@colorBody: #333;
+@baseFontSize: 100.01%;
+
+* {
+    box-sizing: border-box;
+}
 
 html {
     overflow-y: scroll;  // Always show scrollbar to avoid flickr
@@ -14,8 +20,13 @@ body {
     padding: 0;
     color: @colorBody;
     background-color: @bgColorBody;
-    #desinax-hgrid.font();
+    #desinax-hgrid.font(@baseFontSize);
 }
 
 // Affects all basic typographic elements
 #desinax-hgrid.activateDefaultTypography();
+
+// Responsive images
+img {
+    max-width: 100%;
+}

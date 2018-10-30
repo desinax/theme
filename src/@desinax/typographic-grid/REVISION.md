@@ -3,6 +3,13 @@ Revision History
 
 
 
+v1.0.5 (2018-10-05)
+------------------------
+
+* Update namespace to #desinax-hgrid.
+
+
+
 v1.0.4 (2018-10-05)
 ------------------------
 

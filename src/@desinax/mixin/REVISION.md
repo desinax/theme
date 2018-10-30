@@ -3,6 +3,13 @@ Revision History
 
 
 
+v1.0.2 (2018-10-05)
+------------------------
+
+* Add namespace #desinax-mixin for parts of mixins.
+
+
+
 v1.0.1 (2018-10-05)
 ------------------------
 
